@@ -1,0 +1,92 @@
+.footer {
+  background-color: #f8f8f8;
+  padding: 80px 100px 30px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  color: #111;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+}
+
+.footer-column h4 {
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  font-size: 14px;
+  margin-bottom: 12px;
+  color: #555;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-column li:hover {
+  color: #000;
+}
+
+.newsletter p {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.newsletter input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.newsletter button {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #333;
+}
+
+.footer-bottom {
+  margin-top: 60px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer {
+    padding: 60px 30px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}

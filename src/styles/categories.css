@@ -1,0 +1,81 @@
+.categories {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ALWAYS 2 columns */
+}
+
+/* Card */
+.category-card {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+
+/* Image */
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-card:hover img {
+  transform: scale(1.05); /* subtle zoom on hover */
+}
+
+.category-card:hover .category-overlay {
+  background: rgba(0,0,0,0.7);
+}
+
+/* Overlay */
+.category-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Text */
+.category-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 10px 0;
+  font-size: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.category-overlay h3 {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  max-width: 90%;
+}
+
+@media (max-width: 430px) {
+  .categories {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+
+  .category-card {
+    height: 55vh;
+  }
+
+  .category-overlay h3 {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .category-card {
+    height: 70vh;
+  }
+
+  .category-overlay h3 {
+    font-size: 1.1rem;
+  }
+}

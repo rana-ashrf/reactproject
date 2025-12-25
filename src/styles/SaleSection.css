@@ -1,0 +1,57 @@
+.sale-section {
+  width: 100%;
+  height: 100vh; /* full screen height */
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* optional dark overlay */
+.sale-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.sale-overlay {
+  position: relative;
+  text-align: center;
+  color: white;
+  z-index: 2;
+}
+
+.sale-overlay h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.sale-overlay p {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.sale-overlay button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 14px 36px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sale-overlay button:hover {
+  background: black;
+  color: white;
+}

@@ -1,0 +1,333 @@
+{
+  "users": [
+    {
+      "username": "shibi",
+      "email": "ranashraf9526@gmail.com",
+      "phone": "9876543212",
+      "password": "Rana@1234",
+      "id": "1"
+    },
+    {
+      "id": "4fee",
+      "username": "Salah",
+      "email": "sala123@gmail.com",
+      "phone": "9783478672",
+      "password": "Salah@123"
+    }
+  ],
+  "dresses":[
+    {
+      "id": 1,
+      "name": "Adeline tweed Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1499,
+      "color": "Rose",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini1.jpg"
+    },{
+      "id": 2,
+      "name": "Ines tweed Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1799,
+      "color": "Green",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "White ruffled Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1999,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini3.jpg"
+    },{
+      "id": 4,
+      "name": "White polka dot Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1499,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini4.jpg"
+    },{
+      "id": 5,
+      "name": "Denim Solid Zipper Knotted Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1999,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini5.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Utility Pocket shift Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1300,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini6.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Blue checks shift Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1499,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini7.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Puff Sleeve Yellow Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1099,
+      "color": "Yellow",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini8.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Black Casual Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1199,
+      "color": "Black",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini9.jpg"
+    },
+    {
+      "id": 10,
+      "name": "White Tie Floral Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1299,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini10.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Floral Sleevless Boat-Neck Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1499,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini11.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Off-Soulder fit & flare Mini Dress",
+      "category": "Mini Dresses",
+      "price": 2199,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini12.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Crepe Sleevless Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1099,
+      "color": "Yellow",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini13.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Elegent Brown Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1499,
+      "color": "Brown",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini14.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Biege V-Neck Mini Dress",
+      "category": "Mini Dresses",
+      "price": 1599,
+      "color": "Biege",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/mini15.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Brown Square-Neck Long Sleeve Midi Dress",
+      "category": "Midi Dresses",
+      "price": 1599,
+      "color": "Brown",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi1.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Puff Sleeve Princess style Midi Dress",
+      "category": "Midi Dresses",
+      "price": 2299,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi2.jpg"
+    },
+    {
+      "id": 18,
+      "name": "V-Neck checked pinafore Midi Dress",
+      "category": "Midi Dresses",
+      "price": 1799,
+      "color": "Brown",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi5.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Long Sleeve collared Midi Dress",
+      "category": "Midi Dresses",
+      "price": 1899,
+      "color": "Red",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi6.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Vintage plaid cotagecore Midi dress",
+      "category": "Midi Dresses",
+      "price": 1799,
+      "color": "Black",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi7.jpg"
+    },
+    {
+      "id": 21,
+      "name": "BASKELE Midi dress with belt",
+      "category": "Midi Dresses",
+      "price": 1599,
+      "color": "Maroon",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi8.jpg"
+    },
+    {
+      "id": 22,
+      "name": "Short-Sleeve Collar Two Tone Midi dress",
+      "category": "Midi Dresses",
+      "price": 1999,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi9.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Floral print puff sleeve Midi dress",
+      "category": "Midi Dresses",
+      "price": 1599,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi10.jpg"
+    },
+    {
+      "id": 24,
+      "name": "Sailor collar Midi dress",
+      "category": "Midi Dresses",
+      "price": 1599,
+      "color": "Green",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/midi11.jpg"
+    },
+    
+    {
+      "id": 25,
+      "name": "Square-Neck Long Sleeve Pleated waist High-end Women dress",
+      "category": "A-Line Dresses",
+      "price": 2299,
+      "color": "Pink",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/A-line1.jpg"
+    },
+    {
+       "id": 26,
+      "name": "White Mesh Layered Pearl Embellished fish tail dress",
+      "category": "A-Line Dresses",
+      "price": 2499,
+      "color": "Cream",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline2.jpg"
+    },
+    {
+       "id": 27,
+      "name": "Women Elegant Jacquard splice lantern sleeve Arabian dress",
+      "category": "A-Line Dresses",
+      "price": 1799,
+      "color": "Red",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline3.jpg"
+    },
+    {
+       "id": 28,
+      "name": "Women's Printed Long Fitted dress",
+      "category": "A-Line Dresses",
+      "price": 1599,
+      "color": "White",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline4.jpg"
+    },
+    {
+       "id": 29,
+      "name": "Women's Floral Printed Lantern Sleeve dress",
+      "category": "A-Line Dresses",
+      "price": 1699,
+      "color": "Red",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline5.jpg"
+    },
+    {
+       "id": 30,
+      "name": "Women's Woven Patchwork dress",
+      "category": "A-Line Dresses",
+      "price": 1599,
+      "color": "Brown",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline6.jpg"
+    },
+    {
+       "id": 31,
+      "name": "Women woven purple wrap tie waist ruffle sleeve arabic style dress",
+      "category": "A-Line Dresses",
+      "price": 1999,
+      "color": "Purple",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline7.jpg"
+    },
+    {
+       "id": 32,
+      "name": "Women tweed long Sleeve patchwork ruffle waist A-Line dress",
+      "category": "A-Line Dresses",
+      "price": 1599,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline8.jpg"
+    },
+    {
+       "id": 33,
+      "name": "Women mixed fabric bowknot decorated waist cinched woven dress",
+      "category": "A-Line Dresses",
+      "price": 1799,
+      "color": "Blue",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline9.jpg"
+    },
+    {
+       "id": 34,
+      "name": "Square-Neck Double-Layer Ruffle Cuff Maxi Swing dress",
+      "category": "A-Line Dresses",
+      "price": 1599,
+      "color": "Violet",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline10.jpg"
+    },
+    {
+       "id": 35,
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "A-Line Dresses",
+      "price": 1899,
+      "color": "Green",
+      "size": ["S", "M", "L","XL"],
+      "image": "/images/Aline11.jpg"
+    }
+  ]
+}
