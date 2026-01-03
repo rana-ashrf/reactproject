@@ -26,7 +26,7 @@ function Splashscreen({ onFinish }) {
                 className={`text-7xl font-serif tracking-[0.3em] transition-opacity duration-700 will-change-opacity ${visible ? "opacity-100" : "opacity-0"
                     }`}
             >
-                SHI
+                SALA
             </h1>
 
         </div>

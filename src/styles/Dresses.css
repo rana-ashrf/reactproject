@@ -73,3 +73,7 @@
     object-fit: cover;
     /* THIS IS THE KEY */
 }
+
+.product-grid .product-card{
+    flex-direction: column !important;
+}

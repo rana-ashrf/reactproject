@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Dresses.css";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const categories = [
   "All",
@@ -45,8 +46,9 @@ function Dresses() {
   }
 
   return (
-    <div className="dresses-container">
-      <h1>DRESSES</h1>
+    <div className="dresses-container pt-24">
+      <Navbar textColor="black" />
+      <h2 className="text-xl font-semibold mt-18">DRESSES</h2>
 
       {/* SUB CATEGORIES */}
       <div className="category-bar">
@@ -99,7 +101,7 @@ function Dresses() {
           <div
             key={item.id}
             className="product-card"
-            onClick={() => navigate(`/dress/${item.id}`)}
+            onClick={() => navigate(`/dresses/${item.id}`)}
           >
             <div className="image-wrapper">
               <img src={item.image} alt={item.name} />
@@ -116,5 +118,4 @@ function Dresses() {
     </div>
   );
 }
-
-export default Dresses;
+export default Dresses

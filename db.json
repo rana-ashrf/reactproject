@@ -13,321 +13,2534 @@
       "email": "sala123@gmail.com",
       "phone": "9783478672",
       "password": "Salah@123"
+    },
+    {
+      "id": "4a45",
+      "username": "user",
+      "email": "fathimarana1810@gmail.com",
+      "phone": "9876543219",
+      "password": "Asdfghjkl\\123123@"
+    },
+    {
+      "id": "744d",
+      "username": "user",
+      "email": "fathimareana1810@gmail.com",
+      "phone": "9876543210",
+      "password": "123ASD@asd"
     }
   ],
-  "dresses":[
+  "dresses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Adeline tweed Mini Dress",
       "category": "Mini Dresses",
       "price": 1499,
       "color": "Rose",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini1.jpg"
-    },{
-      "id": 2,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini1.jpg",
+      "url": "/dresses"
+    },
+    {
+      "id": "2",
       "name": "Ines tweed Mini Dress",
       "category": "Mini Dresses",
       "price": 1799,
       "color": "Green",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini2.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini2.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "White ruffled Mini Dress",
       "category": "Mini Dresses",
       "price": 1999,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini3.jpg"
-    },{
-      "id": 4,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini3.jpg",
+      "url": "/dresses"
+    },
+    {
+      "id": "4",
       "name": "White polka dot Mini Dress",
       "category": "Mini Dresses",
       "price": 1499,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini4.jpg"
-    },{
-      "id": 5,
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini4.jpg",
+      "url": "/dresses"
+    },
+    {
+      "id": "5",
       "name": "Denim Solid Zipper Knotted Mini Dress",
       "category": "Mini Dresses",
       "price": 1999,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini5.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini5.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Utility Pocket shift Mini Dress",
       "category": "Mini Dresses",
       "price": 1300,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini6.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini6.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Blue checks shift Mini Dress",
       "category": "Mini Dresses",
       "price": 1499,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini7.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini7.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Puff Sleeve Yellow Mini Dress",
       "category": "Mini Dresses",
       "price": 1099,
       "color": "Yellow",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini8.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini8.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Black Casual Mini Dress",
       "category": "Mini Dresses",
       "price": 1199,
       "color": "Black",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini9.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini9.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "White Tie Floral Mini Dress",
       "category": "Mini Dresses",
       "price": 1299,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini10.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini10.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Floral Sleevless Boat-Neck Mini Dress",
       "category": "Mini Dresses",
       "price": 1499,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini11.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini11.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Off-Soulder fit & flare Mini Dress",
       "category": "Mini Dresses",
       "price": 2199,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini12.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini12.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Crepe Sleevless Mini Dress",
       "category": "Mini Dresses",
       "price": 1099,
       "color": "Yellow",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini13.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini13.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Elegent Brown Mini Dress",
       "category": "Mini Dresses",
       "price": 1499,
       "color": "Brown",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini14.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini14.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Biege V-Neck Mini Dress",
       "category": "Mini Dresses",
       "price": 1599,
       "color": "Biege",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/mini15.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/mini15.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Brown Square-Neck Long Sleeve Midi Dress",
       "category": "Midi Dresses",
       "price": 1599,
       "color": "Brown",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi1.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi1.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Puff Sleeve Princess style Midi Dress",
       "category": "Midi Dresses",
       "price": 2299,
+      "discount":50,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi2.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi2.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "V-Neck checked pinafore Midi Dress",
       "category": "Midi Dresses",
       "price": 1799,
       "color": "Brown",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi5.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi5.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Long Sleeve collared Midi Dress",
       "category": "Midi Dresses",
       "price": 1899,
       "color": "Red",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi6.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi6.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Vintage plaid cotagecore Midi dress",
       "category": "Midi Dresses",
       "price": 1799,
+      "discount":50,
       "color": "Black",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi7.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi7.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "BASKELE Midi dress with belt",
       "category": "Midi Dresses",
       "price": 1599,
       "color": "Maroon",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi8.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi8.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "Short-Sleeve Collar Two Tone Midi dress",
       "category": "Midi Dresses",
       "price": 1999,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi9.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi9.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "Floral print puff sleeve Midi dress",
       "category": "Midi Dresses",
       "price": 1599,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi10.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi10.jpg",
+      "url": "/dresses"
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "Sailor collar Midi dress",
       "category": "Midi Dresses",
       "price": 1599,
       "color": "Green",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/midi11.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/midi11.jpg",
+      "url": "/dresses"
     },
-    
     {
-      "id": 25,
+      "id": "25",
       "name": "Square-Neck Long Sleeve Pleated waist High-end Women dress",
       "category": "A-Line Dresses",
       "price": 2299,
+      "discount":50,
       "color": "Pink",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/A-line1.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/A-line1.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 26,
+      "id": "26",
       "name": "White Mesh Layered Pearl Embellished fish tail dress",
       "category": "A-Line Dresses",
       "price": 2499,
       "color": "Cream",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline2.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline2.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 27,
+      "id": "27",
       "name": "Women Elegant Jacquard splice lantern sleeve Arabian dress",
       "category": "A-Line Dresses",
       "price": 1799,
       "color": "Red",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline3.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline3.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 28,
+      "id": "28",
       "name": "Women's Printed Long Fitted dress",
       "category": "A-Line Dresses",
       "price": 1599,
       "color": "White",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline4.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline4.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 29,
+      "id": "29",
       "name": "Women's Floral Printed Lantern Sleeve dress",
       "category": "A-Line Dresses",
       "price": 1699,
       "color": "Red",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline5.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline5.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 30,
+      "id": "30",
       "name": "Women's Woven Patchwork dress",
       "category": "A-Line Dresses",
       "price": 1599,
       "color": "Brown",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline6.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline6.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 31,
+      "id": "31",
       "name": "Women woven purple wrap tie waist ruffle sleeve arabic style dress",
       "category": "A-Line Dresses",
       "price": 1999,
       "color": "Purple",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline7.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline7.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 32,
+      "id": "32",
       "name": "Women tweed long Sleeve patchwork ruffle waist A-Line dress",
       "category": "A-Line Dresses",
       "price": 1599,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline8.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline8.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 33,
+      "id": "33",
       "name": "Women mixed fabric bowknot decorated waist cinched woven dress",
       "category": "A-Line Dresses",
       "price": 1799,
       "color": "Blue",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline9.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline9.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 34,
+      "id": "34",
       "name": "Square-Neck Double-Layer Ruffle Cuff Maxi Swing dress",
       "category": "A-Line Dresses",
       "price": 1599,
       "color": "Violet",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline10.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline10.jpg",
+      "url": "/dresses"
     },
     {
-       "id": 35,
+      "id": "35",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "A-Line Dresses",
       "price": 1899,
       "color": "Green",
-      "size": ["S", "M", "L","XL"],
-      "image": "/images/Aline11.jpg"
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Aline11.jpg",
+      "url": "/dresses"
+    }
+  ],
+  "Tops":[
+    {
+      "id": "36",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1899,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops1.jpg",
+      "url": "/Tops"
+    },{
+      "id": "37",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1090,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops2.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "38",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 990,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops3.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "39",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1202,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops4.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "40",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 849,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops5.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "41",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1320,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops6.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "42",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1080,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops7.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "43",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1320,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops8.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "44",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 880,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops9.jpg",
+      "url": "/Tops"
+    },
+    {
+    "id": "45",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 788,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops10.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "46",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 982,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops11.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "47",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1020,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops12.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "48",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1030,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops13.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "49",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1299,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Top14.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "50",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Tops",
+      "price": 1239,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/Tops15.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "51",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1499,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse1.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "52",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 945,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse3.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "53",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 849,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse4.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "54",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1450,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse5.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "55",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1780,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse6.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "56",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1802,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse7.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "57",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1729,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse8.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "58",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1030,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse9.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "59",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1289,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse10.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "60",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1450,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse11.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "61",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1789,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse12.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "62",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1890,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse13.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "63",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1670,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse14.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "64",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1090,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse15.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "65",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1399,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse16.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "66",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1450,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse17.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "67",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1899,
+      "discount":50,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse18.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "68",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1670,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse19.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "69",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1790,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse20.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "70",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1899,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse21.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "71",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1360,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse22.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "72",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1899,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse23.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "73",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1260,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse24.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "74",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1590,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse25.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "75",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1699,
+      "discount":50,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse26.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "76",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1899,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse27.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "77",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "Blouses",
+      "price": 1890,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blouse28.jpg",
+      "url": "/Tops"
+    },
+     {
+      "id": "78",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 1290,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt1.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "79",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 880,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt2.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "80",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 680,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt3.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "81",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 945,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt4.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "82",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 788,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt5.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "83",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 790,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt6.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "84",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 820,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt7.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "85",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 1090,
+      "discount":50,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt8.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "86",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 1010,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt9.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "87",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 973,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt10.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "88",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 899,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt11.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "89",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 689,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt12.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "90",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 750,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt13.jpg",
+      "url": "/Tops"
+    },
+    {
+      "id": "91",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "category": "T-Shirts",
+      "price": 1390,
+      "discount":50,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/tshirt14.jpg",
+      "url": "/Tops"
+    }
+  ],
+  
+  "bottoms":[
+    {
+      "id": "92",
+      "name": "Women Casual Wide Leg Pleated Straight Trousers",
+      "category": "Pants",
+      "price": 1090,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant1.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "93",
+      "name": "Korean Pleated Loose Fit Pants",
+      "category": "Pants",
+      "price": 999,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant2.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "94",
+      "name": " Biege High Rise Tailored Pant",
+      "category": "Pants",
+      "price": 1070,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant3.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "95",
+      "name": "Ladies High Waist 2 Button Pleated Trousers",
+      "category": "Pants",
+      "price": 1999,
+      "discount":50,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant4.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "96",
+      "name": "Serene Flow High-Waist Trousers",
+      "category": "Pants",
+      "price": 1890,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant5.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "97",
+      "name": "High Waist Wide Leg Pants",
+      "category": "Pants",
+      "price": 1290,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant6.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "98",
+      "name": "Korean High Waist Baggy Pants",
+      "category": "Pants",
+      "price": 1990,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant7.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "99",
+      "name": "Waistband Pleated Palazzo Wide-Leg Pants",
+      "category": "Pants",
+      "price": 1190,
+      "color": "Grey",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant8.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "100",
+      "name": "Straight Leg Trousers",
+      "category": "Pants",
+      "price": 1490,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/pant9.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "101",
+      "name": "Women White Pleated Skirt",
+      "category": "Skirts",
+      "price": 990,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt1.jpg",
+      "url": "/bottoms"
+    },
+      {
+      "id": "102",
+      "name": "Floral Print Maxi A-Line Skirt with Pleated Umbrella Hum",
+      "category": "Skirts",
+      "price": 890,
+      "color": "Multicolor",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt2.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "103",
+      "name": "Elegant White Lace Midi Skirt",
+      "category": "Skirts",
+      "price": 792,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt3.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "104",
+      "name": "Women High Waist A-Line Skirt",
+      "category": "Skirts",
+      "price": 1090,
+      "color": "Grey",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt4.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "105",
+      "name": "Semi A-Line Elastic Long Skirt",
+      "category": "Skirts",
+      "price": 1210,
+      "color": "Burgundy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt5.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "106",
+      "name": "Pleated Flared Maxi Skirt",
+      "category": "Skirts",
+      "price": 999,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt6.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "107",
+      "name": "Women Denim Skirt",
+      "category": "Skirts",
+      "price": 1499,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt7.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "108",
+      "name": "High Waist A-Line Wrap Skirt",
+      "category": "Skirts",
+      "price": 1080,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt8.jpg",
+      "url": "/bottoms"
+    },{
+      "id": "109",
+      "name": "High Waist Pleated A-Line Midi Skirt with a Belt",
+      "category": "Skirts",
+      "price": 849,
+      "color": "Grey",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt9.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "110",
+      "name": "Women's Solid High Waist Skirt",
+      "category": "Skirts",
+      "price": 1010,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt10.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "111",
+      "name": "High Waist A-Line Tweed Midi Skirt",
+      "category": "Skirts",
+      "price": 1290,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/skirt11.jpg",
+      "url": "/bottoms"
+    },
+    {
+      "id": "112",
+      "name": "Plus Solid Wide Leg Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short1.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "113",
+      "name": "Shirred Drawstring Waist Cuffed Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short2.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "114",
+      "name": "Ruffle Layered Skirts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Rose",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short3.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "115",
+      "name": "High Rise Tailored Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short4.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "116",
+      "name": "High Waisted Pleated Polyster Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short5.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "117",
+      "name": "Mini Wrap Skirt",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short6.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "118",
+      "name": "Women Solid Color Metal Button Design Loose Fashion Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short7.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "119",
+      "name": "Women Solid Color Toothpick Stripe Design Loose Casual Shorts",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Navy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short8.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "120",
+      "name": "High Rise Plain Pleated A-Line Mini Skirt",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short9.jpg",
+      "url": "/bottoms"
+    },
+     {
+      "id": "121",
+      "name": "White Ruffles Detail Flared Micro Mini Skirt",
+      "category": "Shorts",
+      "price": 1290,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/short10.jpg",
+      "url": "/bottoms"
+    }
+  ],
+
+  "knitwear":[
+       {
+      "id": "122",
+      "name": "Contrast Knit Pullover",
+      "category": "knitwear",
+      "price": 1290,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear1.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "123",
+      "name": "Jacquard Knit Pullover",
+      "category": "knitwear",
+      "price": 1390,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear2.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "124",
+      "name": "Embroidery Knit Pullover",
+      "category": "knitwear",
+      "price": 1161,
+      "color": "Pink",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear3.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "125",
+      "name": "Embroidered Knit Top",
+      "category": "knitwear",
+      "price": 1490,
+      "color": "Navy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear4.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "126",
+      "name": "Crossed Knit Pullover",
+      "category": "knitwear",
+      "price": 790,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear5.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "127",
+      "name": "Embroidered Knit Pullover",
+      "category": "knitwear",
+      "price": 1290,
+      "color": "Red",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear6.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "128",
+      "name": "Colour Block Knit Pullover",
+      "category": "knitwear",
+      "price": 792,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear7.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "129",
+      "name": "Embroidered Knit Top",
+      "category": "knitwear",
+      "price": 1190,
+      "discount":50,
+      "color": "Grey",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear8.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "130",
+      "name": "Knit Cardigan",
+      "category": "knitwear",
+      "price": 1431,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear9.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "131",
+      "name": "Colour Block Knit Cardigan",
+      "category": "knitwear",
+      "price": 891,
+      "color": "Biege",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear10.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "132",
+      "name": "Button Knit Cardigan",
+      "category": "knitwear",
+      "price": 1390,
+      "color": "Yellow",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear11.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "133",
+      "name": "Button Knit Cardigan",
+      "category": "knitwear",
+      "price": 1390,
+      "color": "Rose",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear12.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "134",
+      "name": "Knit Top",
+      "category": "knitwear",
+      "price": 790,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear13.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "135",
+      "name": "Contrast Knit Top",
+      "category": "knitwear",
+      "price": 790,
+      "color": "Navy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear14.jpeg",
+      "url": "/knitwear"
+    },
+     {
+      "id": "136",
+      "name": "Cable Knit Top",
+      "category": "knitwear",
+      "price": 711,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/knitwear15.jpeg",
+      "url": "/knitwear"
+    }
+
+  ],
+  "outerwear":[
+     {
+      "id": "137",
+      "name": "Faux Fur Coat",
+      "category": "Coats",
+      "price": 3690,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat1.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "138",
+      "name": "Puffer Coat",
+      "category": "Coats",
+      "price": 1590,
+      "color": "Rose",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat2.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "139",
+      "name": "Wool Blend Coat",
+      "category": "Coats",
+      "price": 1890,
+      "discount":50,
+      "color": "Grey",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat3.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "140",
+      "name": "Belted Trench Coat",
+      "category": "Coats",
+      "price": 2490,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat4.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "141",
+      "name": "Assymmetric Pea Coat",
+      "category": "Coats",
+      "price": 1890,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat5.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "142",
+      "name": "Pea Coat",
+      "category": "Coats",
+      "price": 1890,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat6.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "143",
+      "name": "Wool Blend Coat",
+      "category": "Coats",
+      "price": 1512,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat7.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "144",
+      "name": "Belted Wool Blend Coat",
+      "category": "Coats",
+      "price": 2090,
+      "discount":50,
+      "color": "burgundy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat8.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "145",
+      "name": "Pocket Faux Fur Coat",
+      "category": "Coats",
+      "price": 1096,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat9.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "146",
+      "name": "Wool Blend Coat",
+      "category": "Coats",
+      "price": 2990,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/coat10.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "147",
+      "name": "Colour Block Windbreaker Jacket",
+      "category": "Jackets",
+      "price": 1791,
+      "color": "Purple",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket1.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "148",
+      "name": "Pocket Utility Jacket",
+      "category": "Jackets",
+      "price": 1490,
+      "color": "Burgundy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket2.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "149",
+      "name": "Pocket Windbreaker Jacket",
+      "category": "Jackets",
+      "price": 892,
+      "color": "Rose",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket3.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "150",
+      "name": "Contrast Bomber Jacket",
+      "category": "Jackets",
+      "price": 1390,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket4.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "151",
+      "name": "Utility Jacket",
+      "category": "Jackets",
+      "price": 1352,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket5.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "152",
+      "name": "Drawstring Windbreaker Jacket",
+      "category": "Jackets",
+      "price": 1690,
+      "color": "Navy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket6.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "153",
+      "name": "Patchwork Faux Leather Jacket",
+      "category": "Jackets",
+      "price": 2690,
+      "discount":50,
+      "color": "Brown",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket7.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "154",
+      "name": "Button Jacket",
+      "category": "Jackets",
+      "price": 1791,
+      "color": "Red",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket8.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "155",
+      "name": "Reversible Jacket",
+      "category": "Jackets",
+      "price": 1776,
+      "discount":50,
+      "color": "Red",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket9.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "156",
+      "name": "Contrast Utility Jacket",
+      "category": "Jackets",
+      "price": 1290,
+      "color": "Navy",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/jacket10.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "157",
+      "name": "Pocket Classic Blazer",
+      "category": "Blazers",
+      "price": 1890,
+      "color": "Blue",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer1.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "158",
+      "name": "Padded Shoulder Classic Blazer",
+      "category": "Blazers",
+      "price": 1690,
+      "color": "Pink",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer2.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "159",
+      "name": "Button Vest Blazer",
+      "category": "Blazers",
+      "price": 840,
+      "color": "Rose",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer3.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "160",
+      "name": "Classic Blazer",
+      "category": "Blazers",
+      "price": 1832,
+      "color": "Pink",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer4.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "161",
+      "name": "Button Vest Blazer",
+      "category": "Blazers",
+      "price": 792,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer5.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "162",
+      "name": "Lace-trimmed Classic Blazer",
+      "category": "Blazers",
+      "price": 1521,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer6.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "163",
+      "name": "Contrast Classic Blazer",
+      "category": "Blazers",
+      "price": 1990,
+      "color": "Green",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer7.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "164",
+      "name": "Printed Bolero Blazer",
+      "category": "Blazers",
+      "price": 1790,
+      "color": "White",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer8.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "165",
+      "name": "Classic Blazer",
+      "category": "Blazers",
+      "price": 1990,
+      "color": "Black",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer9.jpeg",
+      "url": "/outerwear"
+    },
+    {
+      "id": "166",
+      "name": "Button Classic Blazer",
+      "category": "Blazers",
+      "price": 1890,
+      "color": "Yellow",
+      "size": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "image": "/images/blazer10.jpeg",
+      "url": "/outerwear"
     }
   ]
 }

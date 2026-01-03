@@ -11,8 +11,8 @@ function Footer() {
           <h4>SHOP</h4>
            <ul>
             <li onClick={() => navigate("/dresses")}>Dresses</li>
-            <li onClick={() => navigate("/coat")}>Coat</li>
-            <li onClick={() => navigate("/blouse")}>Blouses</li>
+            <li onClick={() => navigate("/outerwear")}>Coat</li>
+            <li onClick={() => navigate("/tops")}>Blouses</li>
             <li onClick={() => navigate("/bottoms")}>Bottoms</li>
           </ul>
         </div>
@@ -20,8 +20,8 @@ function Footer() {
         <div className="footer-column">
           <h4>HELP</h4>
           <ul>
-            <li>Customer Service</li>
-            <li>Shipping & Returns</li>
+            <li onClick={()=>navigate("/support")}>Customer Service</li>
+            <li onClick={()=>navigate("/shipping")}>Shipping & Returns</li>
             <li>Size Guide</li>
             <li>Track Order</li>
           </ul>

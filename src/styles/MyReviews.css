@@ -1,0 +1,68 @@
+.reviews-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.review-card {
+  display: flex;
+  gap: 16px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ddd;
+}
+
+.review-card img {
+  width: 90px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.review-info h4 {
+  margin: 0;
+}
+
+.stars {
+  color: #f5a623;
+  margin: 4px 0;
+}
+
+.review-info p {
+  margin: 8px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.actions .delete {
+  border-color: red;
+  color: red;
+}
+
+textarea {
+  width: 100%;
+  min-height: 60px;
+  margin-top: 8px;
+}
+
+select {
+  margin-top: 8px;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 100px;
+}

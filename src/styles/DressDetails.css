@@ -5,67 +5,123 @@
   align-items: center;        
 }
 
-.dress-details img {
+
+.dress-details > img {
   width: 300px;
   border-radius: 12px;
 }
 
 
+
 .sizes {
-  margin-top: 16px;
+  margin-top: 18px;
 }
+
 
 .sizes button {
   margin: 6px;
   padding: 8px 18px;
   border-radius: 20px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #ccc;
   background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sizes button:hover {
+  border-color: black;
 }
 
 .sizes .active {
   border: 2px solid black;
+  background: black;
+  color: white;
 }
+
 
 .action-bar {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 24px;
+  width: 100%;
+  max-width: 360px;
 }
 
-.wishlist {
-  border: 1px solid #ccc;
-  padding: 14px;
+
+.wishlist-btn {
+  width: 44px;
+  height: 44px;
+  border: 1.5px solid black;
   border-radius: 50%;
   background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.add-cart {
+.wishlist-btn svg {
+  font-size: 18px;
+  transition: transform 0.15s ease;
+}
+
+.wishlist-btn:active svg {
+  transform: scale(1.15);
+}
+
+.heart-icon {
+  color: black;
+}
+
+.heart-icon.filled {
+  color: black;
+}
+
+
+.add-cart-btn {
   flex: 1;
   background: black;
   color: white;
   padding: 14px;
   border-radius: 30px;
   font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
 }
+
+.add-cart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.go-cart-btn {
+  flex: 1;
+  background: #73292e;
+  color: white;
+  padding: 14px;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
 
 .related-title {
   margin-top: 40px;
   margin-bottom: 12px;
   font-size: 18px;
   font-weight: bold;
-  align-self: flex-center;
+  align-self: center;
 }
 
 .related-products {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 10px;
-}
 
-.related-products::-webkit-scrollbar {
-  display: none;
 }
 
 .related-card {
@@ -89,9 +145,19 @@
   font-size: 14px;
 }
 
+.related-products::-webkit-scrollbar {
+  display: none;
+}
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .related-products {
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 480px) {
+  .related-products {
+    grid-template-columns: 1fr;
+  }
+}
+
+

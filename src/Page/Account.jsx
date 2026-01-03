@@ -11,6 +11,7 @@ import {
   FaCog,
   FaHeadset,
 } from "react-icons/fa";
+import Navbar from "./Navbar"
 
 function Account() {
   const { user, logout } = useAuth();
@@ -20,7 +21,7 @@ function Account() {
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20">
-
+        <Navbar textColor="black" />
       {/* USER INFO */}
       <div className="bg-white mx-4 p-4 rounded-xl flex items-center gap-4">
         <div className="w-12 h-12 rounded-full bg-yellow-200 flex items-center justify-center font-bold text-lg font-['Playfair_Display']">
@@ -37,28 +38,28 @@ function Account() {
       {/* ORDERS SECTION */}
       <Section>
         <Item icon={<FaBox />} text="My Orders" onClick={() => navigate("/orders")} />
-        <Item icon={<FaUndo />} text="Returns" />
-        <Item icon={<FaTicketAlt />} text="Coupons" />
+        <Item icon={<FaUndo />} text="Returns" onClick={()=>navigate("/returns")}/>
+        <Item icon={<FaTicketAlt />} text="Coupons" onClick={()=>navigate("/coupons")}/>
       </Section>
 
       {/* ACCOUNT SECTION */}
       <Section title="My Account">
         <Item icon={<FaHeart />} text="Wishlist" onClick={() => navigate("/wishlist")} />
-        <Item icon={<FaStar />} text="My Reviews" />
-        <Item icon={<FaUser />} text="My Profile" />
-        <Item icon={<FaCog />} text="Settings" />
+        <Item icon={<FaStar />} text="My Reviews" onClick={()=>navigate("/review")}/>
+        <Item icon={<FaUser />} text="My Profile" onClick={()=>navigate("/profile")} />
+        <Item icon={<FaCog />} text="Settings" onClick={()=>navigate("/settings")} />
       </Section>
 
       {/* HELP SECTION */}
       <Section title="Help Center">
-        <Item icon={<FaHeadset />} text="Customer Service" />
-        <Item text="Return Policy" />
-        <Item text="Shipping & Delivery" />
+        <Item icon={<FaHeadset />} text="Customer Service" onClick={()=>navigate("/support")} />
+        <Item text="Return Policy" onClick={()=>navigate("/return-policy")} />
+        <Item text="Shipping & Delivery" onClick={()=>navigate("/shipping")}/>
       </Section>
 
       {/* ABOUT */}
-      <Section title="About Us">
-        <Item text="Social Responsibility" />
+      <Section title="About Us" >
+        <Item text="Social Responsibility"  onClick={()=>navigate("/aboutus")}/>
       </Section>
 
       {/* LOGOUT */}

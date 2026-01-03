@@ -10,6 +10,7 @@ import {
   FaEye,
   FaEyeSlash,
 } from "react-icons/fa";
+import Navbar from "./Navbar";
 
 function Register() {
   const navigate = useNavigate();
@@ -74,6 +75,7 @@ function Register() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
+      <Navbar textColor="black" />
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-4"

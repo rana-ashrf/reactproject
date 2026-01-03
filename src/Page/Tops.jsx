@@ -1,9 +1,162 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/Dresses.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import Navbar from "./Navbar";
+
+const categories = ["All", "Tops", "Blouses", "T-Shirts"];
+
+const colors = [
+  "Black", "White", "Red", "Green", "Blue", "Pink",
+  "Brown", "Grey", "Cream", "Yellow", "Purple"
+];
+
+const sizes = ["S", "M", "L", "XL"];
 
 function Tops() {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [tops, setTops] = useState([]);
+
+  /* FILTERS FROM URL */
+  const category = searchParams.get("category") || "All";
+  const sort = searchParams.get("sort") || "";
+  const color = searchParams.get("color") || "";
+  const size = searchParams.get("size") || "";
+
+  const minParam = searchParams.get("min");
+  const maxParam = searchParams.get("max");
+
+  const minPrice = minParam ? Number(minParam) : 0;
+  const maxPrice = maxParam ? Number(maxParam) : Infinity;
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/Tops")
+      .then((res) => setTops(res.data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  /* UPDATE URL FILTER */
+  const updateFilter = (key, value) => {
+    const params = new URLSearchParams(searchParams);
+    value ? params.set(key, value) : params.delete(key);
+    setSearchParams(params);
+  };
+
+  /* FILTER LOGIC */
+  let filtered = tops.filter(
+    (item) =>
+      (category === "All" || item.category === category) &&
+      (!color ||
+        item.color?.toLowerCase().trim() ===
+          color.toLowerCase().trim()) &&
+      (!size || item.size.includes(size)) &&
+      item.price >= minPrice &&
+      item.price <= maxPrice
+  );
+
+  if (sort === "low-high") {
+    filtered.sort((a, b) => a.price - b.price);
+  }
+
+  if (sort === "high-low") {
+    filtered.sort((a, b) => b.price - a.price);
+  }
+
   return (
-    <div>Tops</div>
-  )
+    <div className="dresses-container pt-24">
+      <Navbar textColor="black" />
+
+      <h2 className="text-xl font-semibold mt-18">TOPS</h2>
+
+      {/* CATEGORY BAR */}
+      <div className="category-bar">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={category === cat ? "active" : ""}
+            onClick={() =>
+              updateFilter("category", cat === "All" ? "" : cat)
+            }
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* SORT & FILTER BAR */}
+      <div className="top-bar">
+        <select
+          value={sort}
+          onChange={(e) => updateFilter("sort", e.target.value)}
+        >
+          <option value="">Sort by</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
+
+        <select
+          value={color}
+          onChange={(e) => updateFilter("color", e.target.value)}
+        >
+          <option value="">Color</option>
+          {colors.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={size}
+          onChange={(e) => updateFilter("size", e.target.value)}
+        >
+          <option value="">Size</option>
+          {sizes.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+
+        {/* PRICE FILTER */}
+        <div className="price-filter">
+          <input
+            type="number"
+            placeholder="Min"
+            value={minParam || ""}
+            onChange={(e) => updateFilter("min", e.target.value)}
+          />
+
+          <input
+            type="number"
+            placeholder="Max (∞)"
+            value={maxParam || ""}
+            onChange={(e) => updateFilter("max", e.target.value)}
+          />
+        </div>
+      </div>
+
+      {/* PRODUCT GRID */}
+      <div className="product-grid">
+        {filtered.map((item) => (
+          <div
+            key={item.id}
+            className="product-card"
+            onClick={() => navigate(`/tops/${item.id}`)}
+          >
+            <div className="image-wrapper">
+              <img src={item.image} alt={item.name} />
+            </div>
+
+            <p className="name">{item.name}</p>
+            <p className="price">₹{item.price}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
-export default Tops
+export default Tops;

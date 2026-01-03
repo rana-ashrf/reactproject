@@ -9,6 +9,7 @@ import {
   FaEyeSlash,
 } from "react-icons/fa";
 import { useAuth } from "../Context/AuthContext";
+import Navbar from "./Navbar";
 
 function Login() {
   const navigate = useNavigate();
@@ -48,6 +49,7 @@ function Login() {
 };
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
+      <Navbar textColor="black" />
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md space-y-5"
