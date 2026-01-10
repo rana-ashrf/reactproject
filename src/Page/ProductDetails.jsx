@@ -9,7 +9,7 @@ import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
 
 function ProductDetails() {
-  const { category, id } = useParams(); // ✅ dynamic
+  const { category, id } = useParams(); 
   const navigate = useNavigate();
 
   const { addToCart, isInCart } = useCart();
@@ -50,11 +50,11 @@ function ProductDetails() {
   };
 
   return (
-    <div className="dress-details">
+    <div className="dress-details pt-24">
       <Navbar textColor="black" />
 
       {/* IMAGE */}
-      <img src={product.image} alt={product.name} />
+      <img src={product.image} alt={product.name} className="mt-19"/>
 
       <h2>{product.name}</h2>
       <h3>₹{product.price}</h3>

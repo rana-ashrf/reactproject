@@ -4,6 +4,7 @@ import "../styles/OrderSuccess.css"
 
 function OrderSuccess() {
     const navigate=useNavigate();
+    
   return (
     <div className='order-success-container'>
         <h2>Order Placed Successfully!</h2>

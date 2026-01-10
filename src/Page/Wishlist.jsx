@@ -1,10 +1,10 @@
 import { useWishlist } from "../Context/WishlistContext";
 import "../styles/Wishlist.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { getFinalPrice } from "../utils/price";
 
 function Wishlist() {
   const { wishlist, removeFromWishlist } = useWishlist();
-  const navigate = useNavigate()
 
   if (wishlist.length === 0) {
     return <h2 className="empty">Your wishlist is empty 🤍</h2>;
@@ -12,33 +12,51 @@ function Wishlist() {
 
   return (
     <div className="wishlist-container">
-
       <h2>My Wishlist</h2>
 
-
       <div className="wishlist-grid">
-        {wishlist.map(item => (
-          <div onClick={() => console.log(item)
-          } className="wishlist-card" key={item.id}>
-            
-            <Link to={`${item.url}/${item.id}`}><img src={item.image} alt={item.name} /></Link>
+        {wishlist.map(item => {
+          const hasDiscount = item.discount && item.discount > 0;
+          const finalPrice = getFinalPrice(item.price, item.discount);
 
-            <div className="wishlist-info">
-              <h4>{item.name}</h4>
-              <p>₹{item.price}</p>
+          return (
+            <div className="wishlist-card" key={item.id}>
+              <Link to={`${item.url}/${item.id}`}>
+                <div className="wishlist-image-wrapper">
+  <img src={item.image} alt={item.name} />
+</div>
 
+              </Link>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  removeFromWishlist(item.id, item.size);
-                }}
-              >
-                Remove
-              </button>
+              <div className="wishlist-info">
+                <h4>{item.name}</h4>
+
+                {/* PRICE*/}
+                <p className="price">
+                  {hasDiscount && (
+                    <span className="old-price">₹{item.price}</span>
+                  )}
+                  <span
+                    className={
+                      hasDiscount ? "new-price" : "normal-price"
+                    }
+                  >
+                    ₹{finalPrice}
+                  </span>
+                </p>
+
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    removeFromWishlist(item.id);
+                  }}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

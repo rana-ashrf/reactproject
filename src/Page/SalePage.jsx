@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { getFinalPrice } from "../utils/price";
+import "../styles/Dresses.css"; 
 
 function SalePage() {
   const [saleProducts, setSaleProducts] = useState([]);
@@ -20,7 +22,7 @@ function SalePage() {
         axios.get(url).then((res) =>
           res.data.map((item) => ({
             ...item,
-            collection: url.split("/").pop(), // 👈 VERY IMPORTANT
+            collection: url.split("/").pop(), 
           }))
         )
       )
@@ -35,9 +37,6 @@ function SalePage() {
       .catch((err) => console.error(err));
   }, []);
 
-  const discountedPrice = (price, discount) =>
-    Math.round(price - (price * discount) / 100);
-
   return (
     <div style={{ padding: "40px" }}>
       <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
@@ -51,60 +50,42 @@ function SalePage() {
           gap: "24px",
         }}
       >
-        {saleProducts.map((item) => (
-          <div
-            key={item.id}
-            onClick={() =>
-              navigate(`/sale/${item.collection}/${item.id}`)
-            }
-            style={{
-              cursor: "pointer",
-              position: "relative",
-            }}
-          >
-            <img
-              src={item.image}
-              alt={item.name}
-              style={{
-                width: "100%",
-                height: "320px",
-                objectFit: "cover",
-                borderRadius: "8px",
-              }}
-            />
+        {saleProducts.map((item) => {
+          const finalPrice = getFinalPrice(item.price, item.discount);
 
-            <span
-              style={{
-                position: "absolute",
-                top: "10px",
-                left: "10px",
-                background: "red",
-                color: "white",
-                padding: "4px 8px",
-                fontSize: "12px",
-              }}
+          return (
+            <div
+              key={`${item.collection}-${item.id}`}
+              onClick={() =>
+                navigate(`/sale/${item.collection}/${item.id}`)
+              }
+              style={{ cursor: "pointer" }}
             >
-              {item.discount}% OFF
-            </span>
+              <div className="image-wrapper">
+                <span className="discount-badge">
+                  {item.discount}% OFF
+                </span>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  style={{
+                    width: "100%",
+                    height: "320px",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  }}
+                />
+              </div>
 
-            <h4 style={{ marginTop: "10px" }}>{item.name}</h4>
+              <p className="name">{item.name}</p>
 
-            <p>
-              <span
-                style={{
-                  textDecoration: "line-through",
-                  marginRight: "8px",
-                  color: "gray",
-                }}
-              >
-                ₹{item.price}
-              </span>
-              <span style={{ color: "red", fontWeight: "bold" }}>
-                ₹{discountedPrice(item.price, item.discount)}
-              </span>
-            </p>
-          </div>
-        ))}
+              <p className="price">
+                <span className="old-price">₹{item.price}</span>
+                <span className="new-price">₹{finalPrice}</span>
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

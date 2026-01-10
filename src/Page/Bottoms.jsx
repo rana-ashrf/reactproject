@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/Dresses.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import { getFinalPrice } from "../utils/price";
 
 const categories = ["All", "Skirts", "Pants", "Shorts"];
 
@@ -16,15 +17,19 @@ const sizes = ["S", "M", "L", "XL"];
 
 function Bottoms() {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  // ✅ correct naming
   const [bottoms, setBottoms] = useState([]);
 
-  const [category, setCategory] = useState("All");
-  const [sort, setSort] = useState("");
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
-  const [price, setPrice] = useState([0, 5000]);
+ 
+  const category = searchParams.get("category") || "All";
+  const sort = searchParams.get("sort") || "";
+  const color = searchParams.get("color") || "";
+  const size = searchParams.get("size") || "";
+  const min = Number(searchParams.get("min")) || 0;
+  const max = searchParams.get("max")
+    ? Number(searchParams.get("max"))
+    : Infinity;
 
   useEffect(() => {
     axios
@@ -33,102 +38,153 @@ function Bottoms() {
       .catch((err) => console.error(err));
   }, []);
 
-  // ✅ filtering logic
+  
+  const updateParam = (key, value) => {
+    const params = Object.fromEntries(searchParams.entries());
+
+    if (!value || value === "All") {
+      delete params[key];
+    } else {
+      params[key] = value;
+    }
+
+    setSearchParams(params);
+  };
+
+  /* FILTER  */
   let filtered = bottoms.filter((item) =>
     (category === "All" || item.category === category) &&
     (!color || item.color === color) &&
     (!size || item.size.includes(size)) &&
-    item.price >= price[0] &&
-    item.price <= price[1]
+    item.price >= min &&
+    item.price <= max
   );
 
-  // ✅ sorting
+  /* SORTING */
   if (sort === "low-high") {
-    filtered = [...filtered].sort((a, b) => a.price - b.price);
+    filtered.sort(
+      (a, b) =>
+        getFinalPrice(a.price, a.discount) -
+        getFinalPrice(b.price, b.discount)
+    );
   }
+
   if (sort === "high-low") {
-    filtered = [...filtered].sort((a, b) => b.price - a.price);
+    filtered.sort(
+      (a, b) =>
+        getFinalPrice(b.price, b.discount) -
+        getFinalPrice(a.price, a.discount)
+    );
   }
 
   return (
-    <>
+    <div className="dresses-container pt-24">
+      <Navbar textColor="black" />
 
-      <div className="dresses-container pt-24">
-        <Navbar textColor="black" />
-        <h2 className="text-xl font-semibold mt-18">BOTTOMS</h2>
+      <h2 className="text-xl font-semibold mt-18">BOTTOMS</h2>
 
-        {/* CATEGORY BAR */}
-        <div className="category-bar">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={category === cat ? "active" : ""}
-              onClick={() => setCategory(cat)}
-            >
-              {cat}
-            </button>
+      {/* CATEGORY  */}
+      <div className="category-bar">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={category === cat ? "active" : ""}
+            onClick={() => updateParam("category", cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* FILTER  */}
+      <div className="top-bar">
+        <select
+          value={sort}
+          onChange={(e) => updateParam("sort", e.target.value)}
+        >
+          <option value="">Sort by</option>
+          <option value="low-high">Price: Low to High</option>
+          <option value="high-low">Price: High to Low</option>
+        </select>
+
+        <select
+          value={color}
+          onChange={(e) => updateParam("color", e.target.value)}
+        >
+          <option value="">Color</option>
+          {colors.map((c) => (
+            <option key={c} value={c}>{c}</option>
           ))}
-        </div>
+        </select>
 
-        {/* SORT & FILTER BAR */}
-        <div className="top-bar">
-          <select onChange={(e) => setSort(e.target.value)}>
-            <option value="">Sort by</option>
-            <option value="low-high">Price: Low to High</option>
-            <option value="high-low">Price: High to Low</option>
-          </select>
-
-          <select onChange={(e) => setColor(e.target.value)}>
-            <option value="">Color</option>
-            {colors.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
-
-          <select onChange={(e) => setSize(e.target.value)}>
-            <option value="">Size</option>
-            {sizes.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-
-          <div className="price-filter">
-            <input
-              type="number"
-              placeholder="Min"
-              onChange={(e) =>
-                setPrice([+e.target.value || 0, price[1]])
-              }
-            />
-            <input
-              type="number"
-              placeholder="Max"
-              onChange={(e) =>
-                setPrice([price[0], +e.target.value || 5000])
-              }
-            />
-          </div>
-        </div>
-
-        {/* PRODUCT GRID */}
-        <div className="product-grid">
-          {filtered.map((item) => (
-            <div
-              key={item.id}
-              className="product-card"
-              onClick={() => navigate(`/bottoms/${item.id}`)} // 🔥 FIXED
-            >
-              <div className="image-wrapper">
-                <img src={item.image} alt={item.name} />
-              </div>
-
-              <p className="name">{item.name}</p>
-              <p className="price">₹{item.price}</p>
-            </div>
+        <select
+          value={size}
+          onChange={(e) => updateParam("size", e.target.value)}
+        >
+          <option value="">Size</option>
+          {sizes.map((s) => (
+            <option key={s} value={s}>{s}</option>
           ))}
+        </select>
+
+        
+        <div className="price-filter">
+          <input
+            type="number"
+            placeholder="Min"
+            value={min || ""}
+            onChange={(e) => updateParam("min", e.target.value)}
+          />
+          <input
+            type="number"
+            placeholder="Max"
+            value={max === Infinity ? "" : max}
+            onChange={(e) => updateParam("max", e.target.value)}
+          />
         </div>
       </div>
-    </>
+
+      {/* PRODUCTS GRID */}
+      <div className="product-grid">
+        {filtered.map(item => {
+          const hasDiscount = item.discount && item.discount >0;
+          const finalPrice = getFinalPrice(item.price,item.discount)
+        
+        return(
+          <div
+            key={item.id}
+            className="product-card"
+            onClick={() =>
+              navigate(`/bottoms/${item.id}?${searchParams.toString()}`)
+            }
+          >
+            <div className="image-wrapper">
+              {hasDiscount && (
+                <span className="discount-badge">
+                  {item.discount}% OFF
+                </span>
+              )}
+              <img src={item.image} alt={item.name} />
+            </div>
+
+            <p className="name">{item.name}</p>
+            {hasDiscount ? (
+              <p className="price">
+                <span className="old-price">₹{item.price}</span>
+                <span className="new-price">₹{finalPrice}</span>
+              </p>
+            ):(<p className="price">
+               <span className="normal-price">₹{item.price}</span>
+            </p>
+          )}
+           
+          </div>
+        );
+})}
+
+
+      </div>
+    </div>
   );
 }
 

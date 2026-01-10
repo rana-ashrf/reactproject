@@ -4,6 +4,13 @@
   padding: 20px;
 }
 
+
+.cart-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+
 .cart-item {
   display: flex;
   gap: 20px;
@@ -16,14 +23,43 @@
   border-radius: 10px;
 }
 
+
+.cart-info h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+
+.price {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 6px 0;
+}
+
+.old-price {
+  text-decoration: line-through !important;
+  color: #999;
+  font-size: 14px;
+}
+
+.new-price {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+}
+
+
 .qty {
   display: flex;
   gap: 10px;
   align-items: center;
+  margin-top: 6px;
 }
 
 .qty button {
   padding: 4px 10px;
+  cursor: pointer;
 }
 
 .remove {
@@ -31,12 +67,15 @@
   color: red;
   border: none;
   cursor: pointer;
+  margin-top: 6px;
 }
+
 
 .empty {
   text-align: center;
   margin-top: 100px;
 }
+
 
 .cart-footer {
   position: sticky;

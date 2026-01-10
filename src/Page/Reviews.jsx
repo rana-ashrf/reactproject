@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "../styles/MyReviews.css";
 
 function MyReviews() {
-  // load reviews and orders from localStorage
   const [reviews, setReviews] = useState(
     JSON.parse(localStorage.getItem("reviews")) || []
   );
@@ -11,7 +10,7 @@ function MyReviews() {
   useEffect(() => {
     const orders = JSON.parse(localStorage.getItem("orders")) || [];
 
-    // Flatten all delivered items
+   
     const items = orders
       .filter(order => order.status === "Delivered")
       .flatMap(order =>
@@ -33,7 +32,7 @@ function MyReviews() {
     setDeliveredItems(items);
   }, [reviews]);
 
-  // Submit review
+ 
   const submitReview = (item) => {
     const newReview = {
       id: Date.now(),
@@ -50,7 +49,7 @@ function MyReviews() {
     setReviews(updatedReviews);
   };
 
-  // Delete review
+ 
   const deleteReview = (item) => {
     const updatedReviews = reviews.filter(
       r => !(r.productId === item.id && r.orderId === item.orderId)

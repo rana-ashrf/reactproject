@@ -2,11 +2,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import "../styles/DressDetails.css"; 
+import "../styles/DressDetails.css";
 import { useWishlist } from "../Context/WishlistContext";
 import Navbar from "./Navbar";
 import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
+import { getFinalPrice } from "../utils/price";
 
 function TopsDetails() {
   const { id } = useParams();
@@ -20,15 +21,17 @@ function TopsDetails() {
   const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/Tops/${id}`)
+    axios
+      .get(`http://localhost:5000/Tops/${id}`)
       .then(res => setTop(res.data))
       .catch(err => console.error(err));
 
-    axios.get("http://localhost:5000/Tops")
+    axios
+      .get("http://localhost:5000/Tops")
       .then(res => setAllTops(res.data))
       .catch(err => console.error(err));
 
-    setSelectedSize(""); 
+    setSelectedSize("");
   }, [id]);
 
   if (!top) return <p>Loading...</p>;
@@ -38,6 +41,9 @@ function TopsDetails() {
     .slice(0, 6);
 
   const isWishlisted = wishlist.some(item => item.id === top.id);
+
+  const hasDiscount = top.discount && top.discount > 0;
+  const finalPrice = getFinalPrice(top.price, top.discount);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -54,8 +60,20 @@ function TopsDetails() {
       {/* PRODUCT IMAGE */}
       <img src={top.image} alt={top.name} className="mt-19" />
 
+      {/* PRODUCT NAME */}
       <h2>{top.name}</h2>
-      <h3>₹{top.price}</h3>
+
+      {/* PRICE */}
+      <p className="price">
+        {hasDiscount && (
+          <span className="old-price">₹{top.price}</span>
+        )}
+        <span className={hasDiscount ? "new-price" : "normal-price"}>
+          ₹{finalPrice}
+        </span>
+      </p>
+
+      {/* COLOR */}
       <p><b>COLOR:</b> {top.color}</p>
 
       {/* SIZE */}
@@ -85,7 +103,6 @@ function TopsDetails() {
           )}
         </button>
 
-        {/* ADD → GO TO CART LOGIC */}
         {isInCart(top.id, selectedSize) ? (
           <button
             className="go-cart-btn"
@@ -104,21 +121,33 @@ function TopsDetails() {
         )}
       </div>
 
-      {/* YOU MAY ALSO LIKE */}
+      {/* RELATED PRODUCTS */}
       <h3 className="related-title">Products that you might like</h3>
 
       <div className="related-products">
-        {related.map(item => (
-          <div
-            key={item.id}
-            className="related-card"
-            onClick={() => navigate(`/tops/${item.id}`)}
-          >
-            <img src={item.image} alt={item.name} />
-            <p className="name">{item.name}</p>
-            <p className="price">₹{item.price}</p>
-          </div>
-        ))}
+        {related.map(item => {
+          const hasDiscount = item.discount && item.discount > 0;
+          const finalPrice = getFinalPrice(item.price, item.discount);
+
+          return (
+            <div
+              key={item.id}
+              className="related-card"
+              onClick={() => navigate(`/tops/${item.id}`)}
+            >
+              <img src={item.image} alt={item.name} />
+              <p className="name">{item.name}</p>
+              <p className="price">
+                {hasDiscount && (
+                  <span className="old-price">₹{item.price}</span>
+                )}
+                <span className={hasDiscount ? "new-price" : "normal-price"}>
+                  ₹{finalPrice}
+                </span>
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

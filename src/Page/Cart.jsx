@@ -20,18 +20,32 @@ function Cart() {
       <h2>Shopping Cart</h2>
 
       {cart.map((item) => (
-        <Link key={item.id} to={`http://localhost:5174${item.url}/${item.id}`}>
-          <div
-            className="cart-item"
-            key={`${item.id}-${item.size}`}
-          >
+        <Link
+          key={`${item.id}-${item.size}`}
+          to={`${item.url}/${item.id}`}
+          className="cart-link"
+        >
+          <div className="cart-item">
             <img src={item.image} alt={item.title} />
 
             <div className="cart-info">
               <h4>{item.title}</h4>
               <p>Size: {item.size}</p>
-              <p>₹{item.price}</p>
 
+              {/*  PRICE */}
+              <p className="price">
+                {item.originalPrice &&
+                  item.originalPrice !== item.price && (
+                    <span className="old-price">
+                      ₹{item.originalPrice}
+                    </span>
+                  )}
+                <span className="new-price">
+                  ₹{item.price}
+                </span>
+              </p>
+
+              {/* QUANTITY */}
               <div className="qty">
                 <button
                   onClick={(e) => {
@@ -40,7 +54,7 @@ function Cart() {
                     updateQty(item.id, item.size, item.qty - 1);
                   }}
                 >
-                  -
+                  −
                 </button>
 
                 <span>{item.qty}</span>
@@ -56,6 +70,7 @@ function Cart() {
                 </button>
               </div>
 
+              {/* REMOVE */}
               <button
                 className="remove"
                 onClick={(e) => {
@@ -66,13 +81,12 @@ function Cart() {
               >
                 Remove
               </button>
-
-
             </div>
-          </div></Link>
+          </div>
+        </Link>
       ))}
 
-      {/* ✅ CHECKOUT FOOTER */}
+      {/* FOOTER */}
       <div className="cart-footer">
         <h3>Total: ₹{subtotal}</h3>
         <button

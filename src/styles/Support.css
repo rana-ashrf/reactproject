@@ -9,7 +9,6 @@
   margin-bottom: 32px;
 }
 
-/* SECTION */
 .support-section {
   margin-bottom: 40px;
 }
@@ -18,7 +17,7 @@
   margin-bottom: 16px;
 }
 
-/* FAQ */
+
 .faq-item {
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -36,7 +35,7 @@
   font-size: 14px;
 }
 
-/* SUPPORT OPTIONS */
+
 .support-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -64,7 +63,6 @@
   transform: translateY(-4px);
 }
 
-/* COLORS */
 .whatsapp {
   background: #25d366;
 }

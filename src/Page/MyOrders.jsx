@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/MyOrders.css";
+import { useAuth } from "../Context/AuthContext";
 
 function MyOrders() {
-  const orders = JSON.parse(localStorage.getItem("orders")) || [];
   const navigate = useNavigate();
+  const { user } = useAuth(); 
 
-  // CANCEL ORDER
+  const ordersKey = `orders_${user.id}`;
+  const orders =
+    JSON.parse(localStorage.getItem(ordersKey)) || [];
+
   const cancelOrder = (orderId) => {
     const updatedOrders = orders.map(order =>
       order.id === orderId
@@ -13,26 +17,19 @@ function MyOrders() {
         : order
     );
 
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
-    window.location.reload();
-  };
-
-  // MARK AS DELIVERED (DEV ONLY)
-  const markAsDelivered = (orderId) => {
-    const updatedOrders = orders.map(order =>
-      order.id === orderId
-        ? { ...order, status: "Delivered" }
-        : order
+    localStorage.setItem(
+      ordersKey,
+      JSON.stringify(updatedOrders)
     );
-
-    localStorage.setItem("orders", JSON.stringify(updatedOrders));
     window.location.reload();
   };
 
-  // HANDLE RETURN
+  
   const handleReturn = (order, item) => {
+    const returnsKey = `returns_${user.id}`;
+
     const existingReturns =
-      JSON.parse(localStorage.getItem("returns")) || [];
+      JSON.parse(localStorage.getItem(returnsKey)) || [];
 
     const returnData = {
       orderId: order.id,
@@ -47,7 +44,7 @@ function MyOrders() {
     };
 
     localStorage.setItem(
-      "returns",
+      returnsKey,
       JSON.stringify([returnData, ...existingReturns])
     );
 
@@ -61,7 +58,7 @@ function MyOrders() {
   return (
     <div className="orders-container">
       <h2 className="text-xl font-semibold">My Orders</h2>
-     
+
       {orders.map(order => (
         <div className="order-card" key={order.id}>
           <div className="order-header">
@@ -73,7 +70,10 @@ function MyOrders() {
           <p>Expected Delivery: {order.deliveryDate}</p>
 
           {order.items.map(item => (
-            <div className="order-item" key={item.id + item.size}>
+            <div
+              className="order-item"
+              key={item.id + item.size}
+            >
               <img src={item.image} alt={item.title} />
               <div>
                 <p>{item.title}</p>
@@ -81,7 +81,7 @@ function MyOrders() {
                 <p>Qty: {item.qty}</p>
                 <p>₹{item.price * item.qty}</p>
 
-                {/* RETURN – only after delivery */}
+                {/* RETURN  */}
                 {order.status === "Delivered" && (
                   <button
                     className="retrn-btn"
@@ -94,17 +94,7 @@ function MyOrders() {
             </div>
           ))}
 
-          {/* DEV BUTTON – simulate delivery */}
-          {order.status !== "Delivered" && order.status !== "Cancelled" && (
-            <button
-              onClick={() => markAsDelivered(order.id)}
-              className="retrn-btn"
-            >
-              Delivered
-            </button>
-          )}
-
-          {/* CANCEL – only when placed */}
+          {/* CANCEL*/}
           {order.status === "Placed" && (
             <button
               className="cancel-btn"

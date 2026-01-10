@@ -27,6 +27,34 @@
       "email": "fathimareana1810@gmail.com",
       "phone": "9876543210",
       "password": "123ASD@asd"
+    },
+    {
+      "id": "b602",
+      "username": "ffff",
+      "email": "test@gmail.com",
+      "phone": "1111111111",
+      "password": "A123@"
+    },
+    {
+      "id": "4457",
+      "username": "rai",
+      "email": "rai123@gmail.com",
+      "phone": "8888888888",
+      "password": "Rai@123"
+    },
+    {
+      "id": "0563",
+      "username": "najma",
+      "email": "naju123@gmail.com",
+      "phone": "9999999999",
+      "password": "Naju@123"
+    },
+    {
+      "id": "9190",
+      "username": "rannna",
+      "email": "ran12@gmail.com",
+      "phone": "6666666666",
+      "password": "Ran@123"
     }
   ],
   "dresses": [
@@ -275,7 +303,7 @@
       "name": "Puff Sleeve Princess style Midi Dress",
       "category": "Midi Dresses",
       "price": 2299,
-      "discount":50,
+      "discount": 50,
       "color": "White",
       "size": [
         "S",
@@ -321,7 +349,7 @@
       "name": "Vintage plaid cotagecore Midi dress",
       "category": "Midi Dresses",
       "price": 1799,
-      "discount":50,
+      "discount": 50,
       "color": "Black",
       "size": [
         "S",
@@ -397,7 +425,7 @@
       "name": "Square-Neck Long Sleeve Pleated waist High-end Women dress",
       "category": "A-Line Dresses",
       "price": 2299,
-      "discount":50,
+      "discount": 50,
       "color": "Pink",
       "size": [
         "S",
@@ -559,13 +587,13 @@
       "url": "/dresses"
     }
   ],
-  "Tops":[
+  "Tops": [
     {
       "id": "36",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1899,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -574,12 +602,13 @@
       ],
       "image": "/images/Tops1.jpg",
       "url": "/Tops"
-    },{
+    },
+    {
       "id": "37",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1090,
-      "color": "Green",
+      "color": "Purple",
       "size": [
         "S",
         "M",
@@ -594,7 +623,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 990,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -609,7 +638,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1202,
-      "color": "Green",
+      "color": "Pink",
       "size": [
         "S",
         "M",
@@ -624,7 +653,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 849,
-      "color": "Green",
+      "color": "Cream",
       "size": [
         "S",
         "M",
@@ -639,7 +668,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1320,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -654,7 +683,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1080,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -669,7 +698,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1320,
-      "color": "Green",
+      "color": "Biege",
       "size": [
         "S",
         "M",
@@ -684,7 +713,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 880,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -695,11 +724,11 @@
       "url": "/Tops"
     },
     {
-    "id": "45",
+      "id": "45",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 788,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -714,7 +743,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 982,
-      "color": "Green",
+      "color": "Rose",
       "size": [
         "S",
         "M",
@@ -729,7 +758,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1020,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -744,7 +773,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1030,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -759,7 +788,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1299,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -774,7 +803,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Tops",
       "price": 1239,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -789,7 +818,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1499,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -804,7 +833,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 945,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -829,12 +858,12 @@
       "image": "/images/blouse4.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "54",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1450,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -844,12 +873,12 @@
       "image": "/images/blouse5.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "55",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1780,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -859,12 +888,12 @@
       "image": "/images/blouse6.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "56",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1802,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -874,12 +903,12 @@
       "image": "/images/blouse7.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "57",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1729,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -889,12 +918,12 @@
       "image": "/images/blouse8.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "58",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1030,
-      "color": "Green",
+      "color": "Brown",
       "size": [
         "S",
         "M",
@@ -904,12 +933,12 @@
       "image": "/images/blouse9.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "59",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1289,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -919,7 +948,7 @@
       "image": "/images/blouse10.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "60",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
@@ -934,12 +963,12 @@
       "image": "/images/blouse11.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "61",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1789,
-      "color": "Green",
+      "color": "Yellow",
       "size": [
         "S",
         "M",
@@ -949,12 +978,12 @@
       "image": "/images/blouse12.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "62",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1890,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -964,12 +993,12 @@
       "image": "/images/blouse13.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "63",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1670,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -979,7 +1008,7 @@
       "image": "/images/blouse14.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "64",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
@@ -994,12 +1023,12 @@
       "image": "/images/blouse15.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "65",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1399,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -1009,12 +1038,12 @@
       "image": "/images/blouse16.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "66",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1450,
-      "color": "Green",
+      "color": "Biege",
       "size": [
         "S",
         "M",
@@ -1024,13 +1053,13 @@
       "image": "/images/blouse17.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "67",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1899,
-      "discount":50,
-      "color": "Green",
+      "discount": 50,
+      "color": "Cream",
       "size": [
         "S",
         "M",
@@ -1040,12 +1069,12 @@
       "image": "/images/blouse18.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "68",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1670,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -1055,12 +1084,12 @@
       "image": "/images/blouse19.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "69",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1790,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1070,12 +1099,12 @@
       "image": "/images/blouse20.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "70",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1899,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -1085,12 +1114,12 @@
       "image": "/images/blouse21.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "71",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1360,
-      "color": "Green",
+      "color": "Brown",
       "size": [
         "S",
         "M",
@@ -1100,12 +1129,12 @@
       "image": "/images/blouse22.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "72",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1899,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1115,12 +1144,12 @@
       "image": "/images/blouse23.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "73",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1260,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -1130,12 +1159,12 @@
       "image": "/images/blouse24.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "74",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1590,
-      "color": "Green",
+      "color": "White",
       "size": [
         "S",
         "M",
@@ -1145,13 +1174,13 @@
       "image": "/images/blouse25.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "75",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1699,
-      "discount":50,
-      "color": "Green",
+      "discount": 50,
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1161,12 +1190,12 @@
       "image": "/images/blouse26.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "76",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1899,
-      "color": "Green",
+      "color": "Rose",
       "size": [
         "S",
         "M",
@@ -1176,12 +1205,12 @@
       "image": "/images/blouse27.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "77",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "Blouses",
       "price": 1890,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1191,12 +1220,12 @@
       "image": "/images/blouse28.jpg",
       "url": "/Tops"
     },
-     {
+    {
       "id": "78",
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 1290,
-      "color": "Green",
+      "color": "Biege",
       "size": [
         "S",
         "M",
@@ -1211,7 +1240,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 880,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -1226,7 +1255,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 680,
-      "color": "Green",
+      "color": "Biege",
       "size": [
         "S",
         "M",
@@ -1241,7 +1270,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 945,
-      "color": "Green",
+      "color": "Maroon",
       "size": [
         "S",
         "M",
@@ -1256,7 +1285,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 788,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -1271,7 +1300,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 790,
-      "color": "Green",
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -1286,7 +1315,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 820,
-      "color": "Green",
+      "color": "Grey",
       "size": [
         "S",
         "M",
@@ -1301,8 +1330,8 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 1090,
-      "discount":50,
-      "color": "Green",
+      "discount": 50,
+      "color": "Black",
       "size": [
         "S",
         "M",
@@ -1317,7 +1346,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 1010,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -1332,7 +1361,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 973,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -1347,7 +1376,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 899,
-      "color": "Green",
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1377,7 +1406,7 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 750,
-      "color": "Green",
+      "color": "Navy",
       "size": [
         "S",
         "M",
@@ -1392,8 +1421,8 @@
       "name": "Ladies Elegant Solid Color flare Sleeve dress",
       "category": "T-Shirts",
       "price": 1390,
-      "discount":50,
-      "color": "Green",
+      "discount": 50,
+      "color": "Blue",
       "size": [
         "S",
         "M",
@@ -1404,8 +1433,7 @@
       "url": "/Tops"
     }
   ],
-  
-  "bottoms":[
+  "bottoms": [
     {
       "id": "92",
       "name": "Women Casual Wide Leg Pleated Straight Trousers",
@@ -1421,7 +1449,7 @@
       "image": "/images/pant1.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "93",
       "name": "Korean Pleated Loose Fit Pants",
       "category": "Pants",
@@ -1436,7 +1464,7 @@
       "image": "/images/pant2.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "94",
       "name": " Biege High Rise Tailored Pant",
       "category": "Pants",
@@ -1451,12 +1479,12 @@
       "image": "/images/pant3.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "95",
       "name": "Ladies High Waist 2 Button Pleated Trousers",
       "category": "Pants",
       "price": 1999,
-      "discount":50,
+      "discount": 50,
       "color": "Black",
       "size": [
         "S",
@@ -1467,7 +1495,7 @@
       "image": "/images/pant4.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "96",
       "name": "Serene Flow High-Waist Trousers",
       "category": "Pants",
@@ -1482,7 +1510,7 @@
       "image": "/images/pant5.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "97",
       "name": "High Waist Wide Leg Pants",
       "category": "Pants",
@@ -1497,7 +1525,7 @@
       "image": "/images/pant6.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "98",
       "name": "Korean High Waist Baggy Pants",
       "category": "Pants",
@@ -1512,7 +1540,7 @@
       "image": "/images/pant7.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "99",
       "name": "Waistband Pleated Palazzo Wide-Leg Pants",
       "category": "Pants",
@@ -1527,7 +1555,7 @@
       "image": "/images/pant8.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "100",
       "name": "Straight Leg Trousers",
       "category": "Pants",
@@ -1542,7 +1570,7 @@
       "image": "/images/pant9.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "101",
       "name": "Women White Pleated Skirt",
       "category": "Skirts",
@@ -1557,7 +1585,7 @@
       "image": "/images/skirt1.jpg",
       "url": "/bottoms"
     },
-      {
+    {
       "id": "102",
       "name": "Floral Print Maxi A-Line Skirt with Pleated Umbrella Hum",
       "category": "Skirts",
@@ -1661,7 +1689,8 @@
       ],
       "image": "/images/skirt8.jpg",
       "url": "/bottoms"
-    },{
+    },
+    {
       "id": "109",
       "name": "High Waist Pleated A-Line Midi Skirt with a Belt",
       "category": "Skirts",
@@ -1721,7 +1750,7 @@
       "image": "/images/short1.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "113",
       "name": "Shirred Drawstring Waist Cuffed Shorts",
       "category": "Shorts",
@@ -1736,7 +1765,7 @@
       "image": "/images/short2.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "114",
       "name": "Ruffle Layered Skirts",
       "category": "Shorts",
@@ -1751,7 +1780,7 @@
       "image": "/images/short3.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "115",
       "name": "High Rise Tailored Shorts",
       "category": "Shorts",
@@ -1766,7 +1795,7 @@
       "image": "/images/short4.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "116",
       "name": "High Waisted Pleated Polyster Shorts",
       "category": "Shorts",
@@ -1781,7 +1810,7 @@
       "image": "/images/short5.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "117",
       "name": "Mini Wrap Skirt",
       "category": "Shorts",
@@ -1796,7 +1825,7 @@
       "image": "/images/short6.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "118",
       "name": "Women Solid Color Metal Button Design Loose Fashion Shorts",
       "category": "Shorts",
@@ -1811,7 +1840,7 @@
       "image": "/images/short7.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "119",
       "name": "Women Solid Color Toothpick Stripe Design Loose Casual Shorts",
       "category": "Shorts",
@@ -1826,7 +1855,7 @@
       "image": "/images/short8.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "120",
       "name": "High Rise Plain Pleated A-Line Mini Skirt",
       "category": "Shorts",
@@ -1841,7 +1870,7 @@
       "image": "/images/short9.jpg",
       "url": "/bottoms"
     },
-     {
+    {
       "id": "121",
       "name": "White Ruffles Detail Flared Micro Mini Skirt",
       "category": "Shorts",
@@ -1857,9 +1886,8 @@
       "url": "/bottoms"
     }
   ],
-
-  "knitwear":[
-       {
+  "knitwear": [
+    {
       "id": "122",
       "name": "Contrast Knit Pullover",
       "category": "knitwear",
@@ -1874,7 +1902,7 @@
       "image": "/images/knitwear1.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "123",
       "name": "Jacquard Knit Pullover",
       "category": "knitwear",
@@ -1889,7 +1917,7 @@
       "image": "/images/knitwear2.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "124",
       "name": "Embroidery Knit Pullover",
       "category": "knitwear",
@@ -1904,7 +1932,7 @@
       "image": "/images/knitwear3.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "125",
       "name": "Embroidered Knit Top",
       "category": "knitwear",
@@ -1919,7 +1947,7 @@
       "image": "/images/knitwear4.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "126",
       "name": "Crossed Knit Pullover",
       "category": "knitwear",
@@ -1934,7 +1962,7 @@
       "image": "/images/knitwear5.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "127",
       "name": "Embroidered Knit Pullover",
       "category": "knitwear",
@@ -1949,7 +1977,7 @@
       "image": "/images/knitwear6.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "128",
       "name": "Colour Block Knit Pullover",
       "category": "knitwear",
@@ -1964,12 +1992,12 @@
       "image": "/images/knitwear7.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "129",
       "name": "Embroidered Knit Top",
       "category": "knitwear",
       "price": 1190,
-      "discount":50,
+      "discount": 50,
       "color": "Grey",
       "size": [
         "S",
@@ -1980,7 +2008,7 @@
       "image": "/images/knitwear8.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "130",
       "name": "Knit Cardigan",
       "category": "knitwear",
@@ -1995,7 +2023,7 @@
       "image": "/images/knitwear9.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "131",
       "name": "Colour Block Knit Cardigan",
       "category": "knitwear",
@@ -2010,7 +2038,7 @@
       "image": "/images/knitwear10.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "132",
       "name": "Button Knit Cardigan",
       "category": "knitwear",
@@ -2025,7 +2053,7 @@
       "image": "/images/knitwear11.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "133",
       "name": "Button Knit Cardigan",
       "category": "knitwear",
@@ -2040,7 +2068,7 @@
       "image": "/images/knitwear12.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "134",
       "name": "Knit Top",
       "category": "knitwear",
@@ -2055,7 +2083,7 @@
       "image": "/images/knitwear13.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "135",
       "name": "Contrast Knit Top",
       "category": "knitwear",
@@ -2070,7 +2098,7 @@
       "image": "/images/knitwear14.jpeg",
       "url": "/knitwear"
     },
-     {
+    {
       "id": "136",
       "name": "Cable Knit Top",
       "category": "knitwear",
@@ -2085,10 +2113,9 @@
       "image": "/images/knitwear15.jpeg",
       "url": "/knitwear"
     }
-
   ],
-  "outerwear":[
-     {
+  "outerwear": [
+    {
       "id": "137",
       "name": "Faux Fur Coat",
       "category": "Coats",
@@ -2123,7 +2150,7 @@
       "name": "Wool Blend Coat",
       "category": "Coats",
       "price": 1890,
-      "discount":50,
+      "discount": 50,
       "color": "Grey",
       "size": [
         "S",
@@ -2199,7 +2226,7 @@
       "name": "Belted Wool Blend Coat",
       "category": "Coats",
       "price": 2090,
-      "discount":50,
+      "discount": 50,
       "color": "burgundy",
       "size": [
         "S",
@@ -2335,7 +2362,7 @@
       "name": "Patchwork Faux Leather Jacket",
       "category": "Jackets",
       "price": 2690,
-      "discount":50,
+      "discount": 50,
       "color": "Brown",
       "size": [
         "S",
@@ -2366,7 +2393,7 @@
       "name": "Reversible Jacket",
       "category": "Jackets",
       "price": 1776,
-      "discount":50,
+      "discount": 50,
       "color": "Red",
       "size": [
         "S",

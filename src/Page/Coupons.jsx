@@ -3,7 +3,6 @@ import { useState } from "react";
 function Coupons() {
   const [copiedCode, setCopiedCode] = useState(null);
 
-  // COUPON DATA (use YYYY-MM-DD format for expiry)
   const coupons = [
     {
       code: "SAVE20",
@@ -31,12 +30,12 @@ function Coupons() {
     }
   ];
 
-  // CHECK IF COUPON IS EXPIRED
+  // EXPIRY CHECK
   const isExpired = (expiry) => {
     return new Date(expiry) < new Date();
   };
 
-  // COPY COUPON CODE
+ 
   const handleCopy = (code) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
@@ -44,7 +43,6 @@ function Coupons() {
     setTimeout(() => setCopiedCode(null), 1500);
   };
 
-  // SPLIT COUPONS
   const availableCoupons = coupons.filter(
     (c) => !c.used && !isExpired(c.expiry)
   );

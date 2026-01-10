@@ -72,7 +72,7 @@ function KnitDetails() {
         ))}
       </div>
 
-      {/* ACTIONS */}
+
       <div className="action-bar">
         <button
           onClick={() => toggleWishlist(top)}
@@ -85,7 +85,7 @@ function KnitDetails() {
           )}
         </button>
 
-        {/* ADD → GO TO CART LOGIC */}
+        {/*  CART  */}
         {isInCart(top.id, selectedSize) ? (
           <button
             className="go-cart-btn"

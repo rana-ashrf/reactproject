@@ -1,49 +1,91 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef
+} from "react";
+import { getFinalPrice } from "../utils/price";
+import { useAuth } from "./AuthContext";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // Load cart from localStorage initially
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const { user } = useAuth();
+  const [cart, setCart] = useState([]);
+  const initializedRef = useRef(false);
 
-  // Save cart to localStorage whenever it changes
+
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    if (!user) return;
 
-  // ADD TO CART
+    const saved =
+      JSON.parse(localStorage.getItem(`cart_${user.id}`)) || [];
+
+    setCart(saved);
+    initializedRef.current = true;
+  }, [user]);
+
+  
+  useEffect(() => {
+    if (!user) return;
+    if (!initializedRef.current) return;
+
+    localStorage.setItem(
+      `cart_${user.id}`,
+      JSON.stringify(cart)
+    );
+  }, [cart, user]);
+
+  //ADD TO CART 
   const addToCart = (product, size) => {
+    const finalPrice = getFinalPrice(
+      product.price,
+      product.discount
+    );
+
     const exists = cart.find(
       (item) => item.id === product.id && item.size === size
     );
 
     if (exists) return;
 
-    setCart([...cart, { ...product, size, qty: 1 }]);
+    setCart([
+      ...cart,
+      {
+        ...product,
+        price: finalPrice,
+        originalPrice: product.price,
+        size,
+        qty: 1,
+        userId: user.id
+      },
+    ]);
   };
 
-  // CHECK IF PRODUCT IS IN CART
-  const isInCart = (id, size) => {
-    return cart.some((item) => item.id === id && item.size === size);
-  };
+  const isInCart = (id, size) =>
+    cart.some(item => item.id === id && item.size === size);
 
-  // REMOVE FROM CART
   const removeFromCart = (id, size) => {
-    setCart(cart.filter((item) => !(item.id === id && item.size === size)));
-  };
-
-  // UPDATE QUANTITY
-  const updateQty = (id, size, qty) => {
-    if (qty < 1) return;
     setCart(
-      cart.map((item) =>
-        item.id === id && item.size === size ? { ...item, qty } : item
+      cart.filter(
+        item => !(item.id === id && item.size === size)
       )
     );
   };
+
+  const updateQty = (id, size, qty) => {
+    if (qty < 1) return;
+    setCart(
+      cart.map(item =>
+        item.id === id && item.size === size
+          ? { ...item, qty }
+          : item
+      )
+    );
+  };
+
+  const clearCart = () => setCart([]);
 
   return (
     <CartContext.Provider
@@ -53,6 +95,7 @@ export const CartProvider = ({ children }) => {
         isInCart,
         removeFromCart,
         updateQty,
+        clearCart
       }}
     >
       {children}

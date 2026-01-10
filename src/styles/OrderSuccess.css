@@ -9,27 +9,26 @@
   text-align: center;
 }
 
-/* SUCCESS ICON */
+
 .order-success-container h2 {
   font-size: 26px;
   color: #1a7f37;
   margin-bottom: 10px;
 }
 
-/* MESSAGE */
+
 .order-success-container p {
   font-size: 16px;
   color: #555;
   margin-bottom: 30px;
 }
 
-/* BUTTON CONTAINER */
+
 .success-actions {
   display: flex;
   gap: 14px;
 }
 
-/* BUTTONS */
 .success-actions button {
   padding: 12px 20px;
   border-radius: 6px;
@@ -40,7 +39,7 @@
   transition: all 0.3s ease;
 }
 
-/* PRIMARY */
+
 .success-actions button:first-child {
   background: #000;
   color: #fff;
@@ -50,7 +49,6 @@
   background: #333;
 }
 
-/* SECONDARY */
 .success-actions button:last-child {
   background: #fff;
   color: #000;
@@ -62,7 +60,7 @@
   color: #fff;
 }
 
-/* MOBILE RESPONSIVE */
+
 @media (max-width: 480px) {
   .success-actions {
     flex-direction: column;

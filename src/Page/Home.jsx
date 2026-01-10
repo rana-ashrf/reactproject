@@ -15,7 +15,6 @@ function Home() {
       <Features />
       <Categories />
       <SaleSection />
-
       <Footer />
     </>
   );

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/categories.css";
 
-// Dynamic imports
 const categories = [
   { title: "OUTERWEAR", image: new URL("../assets/coat.jpg", import.meta.url), path: "/outerwear" },
   { title: "TOPS", image: new URL("../assets/blouse.jpg", import.meta.url), path: "/tops" },

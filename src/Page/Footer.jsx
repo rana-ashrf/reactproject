@@ -22,18 +22,14 @@ function Footer() {
           <ul>
             <li onClick={()=>navigate("/support")}>Customer Service</li>
             <li onClick={()=>navigate("/shipping")}>Shipping & Returns</li>
-            <li>Size Guide</li>
-            <li>Track Order</li>
+            <li onClick={()=>navigate("/shipping")}>Track Order</li>
           </ul>
         </div>
 
         <div className="footer-column">
           <h4>ABOUT</h4>
           <ul>
-            <li>Our Story</li>
-            <li>Sustainability</li>
-            <li>Careers</li>
-            <li>Stores</li>
+            <li onClick={() => navigate("/aboutus")}>About Us</li>
           </ul>
         </div>
 

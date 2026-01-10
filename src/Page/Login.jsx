@@ -38,7 +38,7 @@ function Login() {
 
     if (res.data.length > 0) {
       toast.success("Login successful ✨");
-      login(res.data[0]); // 🔑 use AuthContext
+      login(res.data[0]); 
       navigate("/account");
     } else {
       toast.error("Invalid email or password");

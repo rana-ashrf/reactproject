@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/Dresses.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Navbar from "./Navbar";
+import { getFinalPrice } from "../utils/price";
 
 const categories = ["All", "Coats", "Jackets", "Blazers"];
 
@@ -38,7 +39,7 @@ function OuterWear() {
       .catch(err => console.error(err));
   }, []);
 
-  /* UPDATE URL FILTER */
+ 
   const updateFilter = (key, value) => {
     const params = new URLSearchParams(searchParams);
     value ? params.set(key, value) : params.delete(key);
@@ -54,12 +55,21 @@ function OuterWear() {
     item.price <= maxPrice
   );
 
-  if (sort === "low-high") {
-    filtered.sort((a, b) => a.price - b.price);
-  }
-  if (sort === "high-low") {
-    filtered.sort((a, b) => b.price - a.price);
-  }
+    if (sort === "low-high") {
+      filtered.sort(
+        (a, b) =>
+          getFinalPrice(a.price, a.discount) -
+          getFinalPrice(b.price, b.discount)
+      );
+    }
+  
+    if (sort === "high-low") {
+      filtered.sort(
+        (a, b) =>
+          getFinalPrice(b.price, b.discount) -
+          getFinalPrice(a.price, a.discount)
+      );
+    }
 
   return (
     <div className="dresses-container pt-24">
@@ -130,21 +140,45 @@ function OuterWear() {
       </div>
 
       {/* PRODUCT GRID */}
-      <div className="product-grid">
-        {filtered.map(item => (
+        <div className="product-grid">
+              {filtered.map(item => {
+        const hasDiscount = item.discount && item.discount > 0;
+        const finalPrice = getFinalPrice(item.price, item.discount);
+      
+        return (
           <div
             key={item.id}
             className="product-card"
-            onClick={() => navigate(`/outerwear/${item.id}`)}
+            onClick={() =>
+              navigate(`/outerwear/${item.id}?${searchParams.toString()}`)
+            }
           >
             <div className="image-wrapper">
+              {hasDiscount && (
+                <span className="discount-badge">
+                  {item.discount}% OFF
+                </span>
+              )}
               <img src={item.image} alt={item.name} />
             </div>
-
+      
             <p className="name">{item.name}</p>
-            <p className="price">₹{item.price}</p>
+      
+            {/*  PRICE  */}
+            {hasDiscount ? (
+              <p className="price">
+                <span className="old-price">₹{item.price}</span>
+                <span className="new-price">₹{finalPrice}</span>
+              </p>
+            ) : (
+              <p className="price">
+                <span className="normal-price">₹{item.price}</span>
+              </p>
+            )}
           </div>
-        ))}
+        );
+      })}
+
       </div>
     </div>
   );

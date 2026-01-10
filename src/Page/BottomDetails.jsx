@@ -7,6 +7,7 @@ import { useWishlist } from "../Context/WishlistContext";
 import Navbar from "./Navbar";
 import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
+import { getFinalPrice } from "../utils/price";
 
 function BottomDetails() {
   const { id } = useParams();
@@ -15,19 +16,19 @@ function BottomDetails() {
   const { addToCart, isInCart } = useCart();
   const { wishlist, toggleWishlist } = useWishlist();
 
-  // ✅ correct naming
+  
   const [bottom, setBottom] = useState(null);
   const [allBottoms, setAllBottoms] = useState([]);
   const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
-    // ✅ fetch single bottom
+    
     axios
       .get(`http://localhost:5000/bottoms/${id}`)
       .then((res) => setBottom(res.data))
       .catch((err) => console.error(err));
 
-    // ✅ fetch all bottoms
+   
     axios
       .get("http://localhost:5000/bottoms")
       .then((res) => setAllBottoms(res.data))
@@ -38,7 +39,7 @@ function BottomDetails() {
 
   if (!bottom) return <p>Loading...</p>;
 
-  // ✅ related bottoms
+
   const related = allBottoms
     .filter(
       (item) =>
@@ -49,6 +50,9 @@ function BottomDetails() {
   const isWishlisted = wishlist.some(
     (item) => item.id === bottom.id
   );
+
+  const hasDiscount = bottom.discount && bottom.discount > 0;
+    const finalPrice = getFinalPrice(bottom.price, bottom.discount);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -62,16 +66,26 @@ function BottomDetails() {
     <div className="dress-details pt-24">
       <Navbar textColor="black" />
 
-      {/* ✅ PRODUCT IMAGE */}
+      
       <img src={bottom.image} alt={bottom.name} className="mt-19"/>
 
       <h2>{bottom.name}</h2>
-      <h3>₹{bottom.price}</h3>
+       <p className="price">
+        {hasDiscount && (
+          <span className="old-price">₹{bottom.price}</span>
+        )}
+        <span className={hasDiscount ? "new-price" : "normal-price"}>
+          ₹{finalPrice}
+        </span>
+      </p>
+
+
+
       <p>
         <b>COLOR:</b> {bottom.color}
       </p>
 
-      {/* ✅ SIZE */}
+      {/*  SIZE */}
       <div className="sizes">
         <p>
           <b>SIZE</b>
@@ -87,7 +101,7 @@ function BottomDetails() {
         ))}
       </div>
 
-      {/* ✅ ACTION BAR */}
+      
       <div className="action-bar">
         <button
           onClick={() => toggleWishlist(bottom)}
@@ -118,23 +132,34 @@ function BottomDetails() {
         )}
       </div>
 
-      {/* ✅ RELATED BOTTOMS */}
+      {/*  RELATED BOTTOMS */}
       <h3 className="related-title">
         Products that you might like
       </h3>
 
       <div className="related-products">
-        {related.map((item) => (
+        {related.map(item =>{
+                  const hasDiscount = item.discount && item.discount > 0;
+                  const finalPrice = getFinalPrice(item.price, item.discount);
+                  return (
           <div
             key={item.id}
             className="related-card"
             onClick={() => navigate(`/bottoms/${item.id}`)} // 🔥 FIXED
           >
             <img src={item.image} alt={item.name} />
-            <p className="name">{item.name}</p>
-            <p className="price">₹{item.price}</p>
-          </div>
-        ))}
+              <p className="name">{item.name}</p>
+              <p className="price">
+                {hasDiscount && (
+                  <span className="old-price">₹{item.price}</span>
+                )}
+                <span className={hasDiscount ? "new-price" : "normal-price"}>
+                  ₹{finalPrice}
+                </span>
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

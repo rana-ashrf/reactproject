@@ -24,11 +24,11 @@ function Account() {
         <Navbar textColor="black" />
       {/* USER INFO */}
       <div className="bg-white mx-4 p-4 rounded-xl flex items-center gap-4">
-        <div className="w-12 h-12 rounded-full bg-yellow-200 flex items-center justify-center font-bold text-lg font-['Playfair_Display']">
-          {user.name ? user.name[0] : "SHI"}
+        <div className="w-15 h-13 rounded-full bg-yellow-50 flex items-center justify-center font-bold text-lg font-['Playfair_Display']">
+          {user.name ? user.name[0] : "SALA"}
         </div>
         <div>
-          <h3 className="font-semibold">{user.name || "No Name"}</h3>
+          
           <p className="text-sm text-gray-600">{user.phone || "No Phone"}</p>
           <p className="text-sm text-gray-600">{user.email || "No Email"}</p>
         </div>
@@ -67,7 +67,7 @@ function Account() {
         <button
           onClick={() => {
             logout();
-            navigate("/"); // go to home after logout
+            navigate("/");
           }}
           className="w-full py-3 rounded-xl bg-black text-white"
         >

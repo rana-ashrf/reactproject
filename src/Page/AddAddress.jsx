@@ -1,18 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/AddAddress.css";
+import { useAuth } from "../Context/AuthContext"; // ✅ ADDED
 
 function AddAddress() {
   const navigate = useNavigate();
+  const { user } = useAuth(); // ✅ ADDED
 
   const saveAddress = (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
-    localStorage.setItem("address", JSON.stringify(data));
+
+  
+    localStorage.setItem(
+      `address_${user.id}`,
+      JSON.stringify(data)
+    );
+
     navigate("/checkout");
   };
 
   return (
-    <form className="address-container" onSubmit={saveAddress}>
+    <form
+      className="address-container"
+      onSubmit={saveAddress}
+    >
       <input name="name" placeholder="Name" required />
       <input name="phone" placeholder="Phone" required />
       <input name="house" placeholder="House / Flat" required />
@@ -26,4 +37,3 @@ function AddAddress() {
 }
 
 export default AddAddress;
-

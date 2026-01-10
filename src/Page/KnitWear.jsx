@@ -52,7 +52,7 @@ function KnitWear()  {
     <div className="dresses-container">
       <h2 className="text-xl font-semibold">KNITWEAR</h2>
 
-      {/* CATEGORY BAR */}
+      {/* CATEGORY  */}
       <div className="category-bar">
         {categories.map(cat => (
           <button
@@ -65,7 +65,7 @@ function KnitWear()  {
         ))}
       </div>
 
-      {/* SORT & FILTER BAR */}
+      {/* SORT & FILTER  */}
       <div className="top-bar">
         <select onChange={e => setSort(e.target.value)}>
           <option value="">Sort by</option>

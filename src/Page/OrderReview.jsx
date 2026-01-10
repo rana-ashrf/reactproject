@@ -3,9 +3,11 @@ import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/OrderReview.css";
+import { useAuth } from "../Context/AuthContext"; 
 
 function OrderReview() {
   const { cart, clearCart } = useCart();
+  const { user } = useAuth(); 
   const navigate = useNavigate();
 
   const [couponCode, setCouponCode] = useState("");
@@ -17,9 +19,12 @@ function OrderReview() {
     0
   );
 
-  const address = JSON.parse(localStorage.getItem("address"));
+  
+  const address = JSON.parse(
+    localStorage.getItem(`address_${user.id}`)
+  );
 
-  /* COUPON RULES */
+  
   const coupons = [
     {
       code: "SAVE20",
@@ -55,44 +60,23 @@ function OrderReview() {
     }
   ];
 
-  /* CHECK EXPIRY */
-  const isExpired = (expiry) => {
-    return new Date(expiry) < new Date();
-  };
+  const isExpired = (expiry) => new Date(expiry) < new Date();
 
-  /* APPLY COUPON */
   const applyCoupon = () => {
     const coupon = coupons.find(
       (c) => c.code === couponCode.toUpperCase()
     );
 
-    if (!coupon) {
-      toast.error("Invalid coupon code");
-      return;
-    }
+    if (!coupon) return toast.error("Invalid coupon code");
+    if (coupon.used) return toast.error("This coupon is already used");
+    if (isExpired(coupon.expiry)) return toast.error("Coupon expired");
+    if (total < coupon.minAmount)
+      return toast.error(`Minimum order ₹${coupon.minAmount} required`);
 
-    if (coupon.used) {
-      toast.error("This coupon is already used");
-      return;
-    }
-
-    if (isExpired(coupon.expiry)) {
-      toast.error("This coupon has expired");
-      return;
-    }
-
-    if (total < coupon.minAmount) {
-      toast.error(`Minimum order ₹${coupon.minAmount} required`);
-      return;
-    }
-
-    let discountAmount = 0;
-
-    if (coupon.type === "percent") {
-      discountAmount = (total * coupon.value) / 100;
-    } else {
-      discountAmount = coupon.value;
-    }
+    const discountAmount =
+      coupon.type === "percent"
+        ? (total * coupon.value) / 100
+        : coupon.value;
 
     setDiscount(discountAmount);
     setAppliedCoupon(coupon.code);
@@ -107,7 +91,6 @@ function OrderReview() {
 
   const finalAmount = total - discount;
 
-  /* PLACE ORDER */
   const placeOrder = () => {
     if (cart.length === 0) return;
 
@@ -126,11 +109,14 @@ function OrderReview() {
       discount,
     };
 
+   
+    const ordersKey = `orders_${user.id}`;
+
     const existingOrders =
-      JSON.parse(localStorage.getItem("orders")) || [];
+      JSON.parse(localStorage.getItem(ordersKey)) || [];
 
     localStorage.setItem(
-      "orders",
+      ordersKey,
       JSON.stringify([newOrder, ...existingOrders])
     );
 
@@ -163,12 +149,19 @@ function OrderReview() {
 
       {/* PRODUCTS */}
       {cart.map((item) => (
-        <div className="checkout-product-card" key={item.id}>
+        <div
+          className="checkout-product-card"
+          key={`${item.id}-${item.size}`}
+        >
           <img src={item.image} alt={item.title} />
           <div>
             <p>{item.title}</p>
             <p>Qty: {item.qty}</p>
-            <p>₹{item.price * item.qty}</p>
+            <p className="price">
+              <span className="normal-price">
+                ₹{item.price * item.qty}
+              </span>
+            </p>
           </div>
         </div>
       ))}
@@ -193,7 +186,7 @@ function OrderReview() {
         )}
       </div>
 
-      {/* PRICE */}
+      {/* PRICE DETAILS */}
       <div className="price-card">
         <div className="row">
           <span>Total Amount</span>
@@ -201,7 +194,7 @@ function OrderReview() {
         </div>
 
         {discount > 0 && (
-          <div className="row">
+          <div className="row discount">
             <span>Discount</span>
             <span>-₹{discount}</span>
           </div>

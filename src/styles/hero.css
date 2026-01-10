@@ -13,7 +13,7 @@
   object-fit: cover;
 }
 
-/* Overlay layer */
+
 .hero::after {
   content: "";
   position: absolute;
@@ -22,7 +22,6 @@
 
 }
 
-/* Content */
 .hero-overlay {
   position: absolute;
   bottom: 12%;
@@ -32,7 +31,7 @@
   color: white;
   z-index: 2;
   width: 100%;
-  padding: 0 16px; /* prevents overflow */
+  padding: 0 16px; 
 }
 
 .hero-title {
@@ -43,7 +42,7 @@
   color: #fff;
 }
 
-/* Button */
+
 .hero-btn {
   background: transparent;
   border: 1px solid #fff;

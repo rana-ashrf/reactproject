@@ -63,18 +63,18 @@ function App() {
         <Route path="/bottoms" element={<Bottoms />} />
         <Route path="/dresses" element={<Dresses />} />
         <Route path="/knitwear" element={<KnitWear />} />
-        <Route path='/checkout'element={<OrderReview/>}/>
-        <Route path='add-address' element={<AddAddress/>}/>
-        <Route path='/orders' element={<MyOrders/>}/>
-        <Route path='/order-success' element={<OrderSuccess/>}/>
-        <Route path='/returns' element={<Returns/>}/>
+        <Route path='/checkout'element={<ProtectedRoute><OrderReview/></ProtectedRoute>}/>
+        <Route path='add-address' element={<ProtectedRoute><AddAddress/></ProtectedRoute>}/>
+        <Route path='/orders' element={<ProtectedRoute><MyOrders/></ProtectedRoute>}/>
+        <Route path='/order-success' element={<ProtectedRoute><OrderSuccess/></ProtectedRoute>}/>
+        <Route path='/returns' element={<ProtectedRoute><Returns/></ProtectedRoute>}/>
         <Route path='/return-policy' element={<ReturnPolicy/>}/>
         <Route path='/review' element={<Reviews/>}/>
-        <Route path='/settings'element={<Settings/>}/>
+        <Route path='/settings'element={<ProtectedRoute><Settings/></ProtectedRoute>}/>
         <Route path='/shipping' element={<Shipping/>}/>
         <Route path='/support' element={<Support/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/coupons' element={<Coupons/>}/>
+        <Route path='/profile' element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
+        <Route path='/coupons' element={<ProtectedRoute><Coupons/></ProtectedRoute>}/>
         <Route path='/aboutus' element={<AboutUs/>}/>
         <Route path="/tops/:id" element={<TopsDetails />}/>
         <Route path='/bottoms/:id' element={<BottomDetails/>}/>

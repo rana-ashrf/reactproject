@@ -7,6 +7,7 @@ import { useWishlist } from "../Context/WishlistContext";
 import Navbar from "./Navbar";
 import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
+import { getFinalPrice } from "../utils/price";
 
 function DressDetails() {
   const { id } = useParams();
@@ -20,13 +21,15 @@ function DressDetails() {
   const [selectedSize, setSelectedSize] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/dresses/${id}`)
+    axios
+      .get(`http://localhost:5000/dresses/${id}`)
       .then(res => setDress(res.data));
 
-    axios.get("http://localhost:5000/dresses")
+    axios
+      .get("http://localhost:5000/dresses")
       .then(res => setAllDresses(res.data));
 
-    setSelectedSize(""); // reset size when product changes
+    setSelectedSize("");
   }, [id]);
 
   if (!dress) return <p>Loading...</p>;
@@ -36,6 +39,9 @@ function DressDetails() {
     .slice(0, 6);
 
   const isWishlisted = wishlist.some(item => item.id === dress.id);
+
+  const hasDiscount = dress.discount && dress.discount > 0;
+  const finalPrice = getFinalPrice(dress.price, dress.discount);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -49,11 +55,21 @@ function DressDetails() {
     <div className="dress-details pt-24">
       <Navbar textColor="black" />
 
-      {/* PRODUCT IMAGE */}
-      <img src={dress.image} alt={dress.name} className="mt-19"/>
+     
+      <img src={dress.image} alt={dress.name} className="mt-19" />
 
       <h2>{dress.name}</h2>
-      <h3>₹{dress.price}</h3>
+
+      {/*  PRICE */}
+      <p className="price">
+        {hasDiscount && (
+          <span className="old-price">₹{dress.price}</span>
+        )}
+        <span className={hasDiscount ? "new-price" : "normal-price"}>
+          ₹{finalPrice}
+        </span>
+      </p>
+
       <p><b>COLOR:</b> {dress.color}</p>
 
       {/* SIZE */}
@@ -70,7 +86,6 @@ function DressDetails() {
         ))}
       </div>
 
-      {/* ACTIONS */}
       <div className="action-bar">
         <button
           onClick={() => toggleWishlist(dress)}
@@ -83,7 +98,6 @@ function DressDetails() {
           )}
         </button>
 
-        {/* ADD → GO TO CART LOGIC */}
         {isInCart(dress.id, selectedSize) ? (
           <button
             className="go-cart-btn"
@@ -102,21 +116,33 @@ function DressDetails() {
         )}
       </div>
 
-      {/* YOU MAY ALSO LIKE */}
+      {/* RELATED PRODUCTS */}
       <h3 className="related-title">Products that you might like</h3>
 
       <div className="related-products">
-        {related.map(item => (
-          <div
-            key={item.id}
-            className="related-card"
-            onClick={() => navigate(`/dresses/${item.id}`)}
-          >
-            <img src={item.image} alt={item.name} />
-            <p className="name">{item.name}</p>
-            <p className="price">₹{item.price}</p>
-          </div>
-        ))}
+        {related.map(item => {
+          const hasDiscount = item.discount && item.discount > 0;
+          const finalPrice = getFinalPrice(item.price, item.discount);
+
+          return (
+            <div
+              key={item.id}
+              className="related-card"
+              onClick={() => navigate(`/dresses/${item.id}`)}
+            >
+              <img src={item.image} alt={item.name} />
+              <p className="name">{item.name}</p>
+              <p className="price">
+                {hasDiscount && (
+                  <span className="old-price">₹{item.price}</span>
+                )}
+                <span className={hasDiscount ? "new-price" : "normal-price"}>
+                  ₹{finalPrice}
+                </span>
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

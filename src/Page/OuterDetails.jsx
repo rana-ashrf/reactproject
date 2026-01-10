@@ -7,6 +7,7 @@ import { useWishlist } from "../Context/WishlistContext";
 import Navbar from "./Navbar";
 import { useCart } from "../Context/CartContext";
 import { toast } from "react-toastify";
+import { getFinalPrice } from "../utils/price";
 
 function OuterDetails() {
   const { id } = useParams();
@@ -38,6 +39,9 @@ function OuterDetails() {
     .slice(0, 6);
 
   const isWishlisted = wishlist.some(item => item.id === top.id);
+  
+   const hasDiscount = top.discount && top.discount > 0;
+    const finalPrice = getFinalPrice(top.price, top.discount);
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -55,7 +59,15 @@ function OuterDetails() {
       <img src={top.image} alt={top.name} className="mt-19"/>
 
       <h2>{top.name}</h2>
-      <h3>₹{top.price}</h3>
+<p className="price">
+        {hasDiscount && (
+          <span className="old-price">₹{top.price}</span>
+        )}
+        <span className={hasDiscount ? "new-price" : "normal-price"}>
+          ₹{finalPrice}
+        </span>
+      </p>
+
       <p><b>COLOR:</b> {top.color}</p>
 
       {/* SIZE */}
@@ -85,7 +97,7 @@ function OuterDetails() {
           )}
         </button>
 
-        {/* ADD → GO TO CART LOGIC */}
+        {/*  CART  */}
         {isInCart(top.id, selectedSize) ? (
           <button
             className="go-cart-btn"
@@ -105,20 +117,33 @@ function OuterDetails() {
       </div>
 
       {/* YOU MAY ALSO LIKE */}
-      <h3 className="related-title">Products that you might like</h3>
-
-      <div className="related-products">
-        {related.map(item => (
-          <div
-            key={item.id}
-            className="related-card"
-            onClick={() => navigate(`/outerwear/${item.id}`)}
-          >
-            <img src={item.image} alt={item.name} />
-            <p className="name">{item.name}</p>
-            <p className="price">₹{item.price}</p>
-          </div>
-        ))}
+            <h3 className="related-title">Products that you might like</h3>
+      
+            <div className="related-products">
+              {related.map(item => {
+                const hasDiscount = item.discount && item.discount > 0;
+                const finalPrice = getFinalPrice(item.price, item.discount);
+      
+                return (
+                  <div
+                    key={item.id}
+                    className="related-card"
+                    onClick={() => navigate(`/outerwear/${item.id}`)}
+                  >
+                    <img src={item.image} alt={item.name} />
+                    <p className="name">{item.name}</p>
+                    <p className="price">
+                      {hasDiscount && (
+                        <span className="old-price">₹{item.price}</span>
+                      )}
+                      <span className={hasDiscount ? "new-price" : "normal-price"}>
+                        ₹{finalPrice}
+                      </span>
+                    </p>
+                  </div>
+                );
+              })}
+              
       </div>
     </div>
   );

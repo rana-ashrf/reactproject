@@ -7,7 +7,7 @@ function NewCollection() {
   const [columns, setColumns] = useState(5);
   const navigate = useNavigate();
 
-  // 🔹 Handle responsive columns
+ 
   useEffect(() => {
     const updateColumns = () => {
       const width = window.innerWidth;
