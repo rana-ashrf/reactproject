@@ -5,8 +5,10 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './Context/AuthContext'
 import { WishlistProvider } from './Context/WishlistContext'
 import { CartProvider } from './Context/CartContext.jsx'
+import { AdminAuthProvider } from './Context/AdminAuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
+  <AdminAuthProvider>
   <AuthProvider>
     <CartProvider>
       <WishlistProvider>
@@ -16,4 +18,5 @@ createRoot(document.getElementById('root')).render(
       </WishlistProvider>
     </CartProvider>
   </AuthProvider>
+  </AdminAuthProvider>
 );

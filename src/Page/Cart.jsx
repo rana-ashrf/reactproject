@@ -1,6 +1,7 @@
 import { useCart } from "../Context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Cart.css";
+import Navbar from "./Navbar";
 
 function Cart() {
   const { cart, removeFromCart, updateQty } = useCart();
@@ -17,7 +18,8 @@ function Cart() {
 
   return (
     <div className="cart-container">
-      <h2>Shopping Cart</h2>
+      <Navbar textColor="black" />
+      <h2 className="text-xl font-semibold mt-18">Shopping Cart</h2>
 
       {cart.map((item) => (
         <Link

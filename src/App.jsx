@@ -41,6 +41,17 @@ import NewCollection from './Page/NewCollection';
 import ProductDetails from "./Page/ProductDetails";
 import SalePage from './Page/SalePage';
 import SaleProductDetails from './Page/SaleProductDetails';
+import PublicRoute from './Routes/PublicRoute';
+import AdminProtectedRoute from './Admin/routes/AdminProtectedRoute';
+import AdminDashboard from './Admin/pages/AdminDashboard';
+import AdminRegister from './Admin/pages/AdminRegister';
+import ManageOrders from './Admin/pages/ManageOrders';
+import ManageProducts from './Admin/pages/ManageProducts';
+import ManageUsers from './Admin/pages/ManageUsers';
+import AdminSettings from './Admin/pages/AdminSettings';
+import AdminLogin from './Admin/pages/AdminLogin';
+import ManageSales from './Admin/pages/ManageSales';
+
 
 
 
@@ -56,7 +67,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<Register />} />
         <Route path="/outerwear" element={<OuterWear />} />
         <Route path="/tops" element={<Tops/>} />
@@ -85,8 +96,14 @@ function App() {
         <Route path="/product/:category/:id" element={<ProductDetails />} />
         <Route path='/sale' element={<SalePage/>}/>
         <Route path="/sale/:collection/:id" element={<SaleProductDetails />} />
-       
-    
+        <Route path='/admin/dashboard' element={<AdminProtectedRoute><AdminDashboard/></AdminProtectedRoute>}/>
+        <Route path='/admin/login' element={<AdminLogin/>}/>
+        <Route path='/admin/register' element={<AdminRegister/>}/>
+        <Route path='/admin/orders' element={<AdminProtectedRoute><ManageOrders/></AdminProtectedRoute>}/>
+        <Route path='/admin/products' element={<AdminProtectedRoute><ManageProducts/></AdminProtectedRoute>}/>
+        <Route path='/admin/users' element={<AdminProtectedRoute><ManageUsers/></AdminProtectedRoute>}/>
+        <Route path='/admin/settings' element={<AdminProtectedRoute><AdminSettings/></AdminProtectedRoute>}/>
+        <Route path='/admin/managesale' element={<AdminProtectedRoute><ManageSales/></AdminProtectedRoute>}/>
 
 
         <Route

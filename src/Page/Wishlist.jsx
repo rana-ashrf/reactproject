@@ -2,6 +2,7 @@ import { useWishlist } from "../Context/WishlistContext";
 import "../styles/Wishlist.css";
 import { Link } from "react-router-dom";
 import { getFinalPrice } from "../utils/price";
+import Navbar from "./Navbar";
 
 function Wishlist() {
   const { wishlist, removeFromWishlist } = useWishlist();
@@ -11,8 +12,9 @@ function Wishlist() {
   }
 
   return (
-    <div className="wishlist-container">
-      <h2>My Wishlist</h2>
+    <div className="wishlist-container pt-24" >
+      <Navbar textColor="black" />
+      <h2 className="text-xl font-semibold mt-18">My Wishlist</h2>
 
       <div className="wishlist-grid">
         {wishlist.map(item => {

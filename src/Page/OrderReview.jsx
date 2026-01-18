@@ -1,88 +1,74 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/OrderReview.css";
-import { useAuth } from "../Context/AuthContext"; 
+import { useAuth } from "../Context/AuthContext";
 
 function OrderReview() {
   const { cart, clearCart } = useCart();
-  const { user } = useAuth(); 
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   const [couponCode, setCouponCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [appliedCoupon, setAppliedCoupon] = useState(null);
+  const [coupons, setCoupons] = useState([]);
 
+  /* ================= LOAD COUPONS ================= */
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("coupons")) || [];
+    setCoupons(stored);
+  }, []);
+
+  /* ================= TOTAL ================= */
   const total = cart.reduce(
     (sum, item) => sum + item.price * item.qty,
     0
   );
 
-  
   const address = JSON.parse(
     localStorage.getItem(`address_${user.id}`)
   );
 
-  
-  const coupons = [
-    {
-      code: "SAVE20",
-      type: "percent",
-      value: 20,
-      minAmount: 1999,
-      expiry: "2025-12-31",
-      used: false,
-    },
-    {
-      code: "FIRSTBUY",
-      type: "flat",
-      value: 300,
-      minAmount: 0,
-      expiry: "2025-01-05",
-      used: true,
-    },
-    {
-      code: "FESTIVE10",
-      type: "percent",
-      value: 10,
-      minAmount: 0,
-      expiry: "2024-12-10",
-      used: false,
-    },
-    {
-      code: "NORETURN5OFF",
-      type: "percent",
-      value: 10,
-      minAmount: 0,
-      expiry: "2026-02-10",
-      used: false,
-    }
-  ];
+  const isExpired = (expiry) =>
+    new Date(expiry) < new Date();
 
-  const isExpired = (expiry) => new Date(expiry) < new Date();
-
+  /* ================= APPLY COUPON ================= */
   const applyCoupon = () => {
     const coupon = coupons.find(
-      (c) => c.code === couponCode.toUpperCase()
+      (c) =>
+        c.code === couponCode.toUpperCase() &&
+        c.active
     );
 
-    if (!coupon) return toast.error("Invalid coupon code");
-    if (coupon.used) return toast.error("This coupon is already used");
-    if (isExpired(coupon.expiry)) return toast.error("Coupon expired");
-    if (total < coupon.minAmount)
-      return toast.error(`Minimum order ₹${coupon.minAmount} required`);
+    if (!coupon) return toast.error("Invalid coupon");
+    if (coupon.used) return toast.error("Coupon already used");
+    if (isExpired(coupon.expiry))
+      return toast.error("Coupon expired");
+
+    /* ✅ MINIMUM ORDER CHECK (FIX) */
+    if (total < coupon.minAmount) {
+      return toast.error(
+        `Minimum order ₹${coupon.minAmount} required`
+      );
+    }
 
     const discountAmount =
-      coupon.type === "percent"
+      coupon.type === "percentage"
         ? (total * coupon.value) / 100
         : coupon.value;
 
+    if (discountAmount <= 0)
+      return toast.error("Invalid discount");
+
     setDiscount(discountAmount);
     setAppliedCoupon(coupon.code);
+
     toast.success(`Coupon ${coupon.code} applied`);
   };
 
+  /* ================= REMOVE COUPON ================= */
   const removeCoupon = () => {
     setDiscount(0);
     setAppliedCoupon(null);
@@ -91,6 +77,7 @@ function OrderReview() {
 
   const finalAmount = total - discount;
 
+  /* ================= PLACE ORDER ================= */
   const placeOrder = () => {
     if (cart.length === 0) return;
 
@@ -109,9 +96,7 @@ function OrderReview() {
       discount,
     };
 
-   
     const ordersKey = `orders_${user.id}`;
-
     const existingOrders =
       JSON.parse(localStorage.getItem(ordersKey)) || [];
 
@@ -119,6 +104,19 @@ function OrderReview() {
       ordersKey,
       JSON.stringify([newOrder, ...existingOrders])
     );
+
+    /* MARK COUPON AS USED */
+    if (appliedCoupon) {
+      const updatedCoupons = coupons.map((c) =>
+        c.code === appliedCoupon
+          ? { ...c, used: true }
+          : c
+      );
+      localStorage.setItem(
+        "coupons",
+        JSON.stringify(updatedCoupons)
+      );
+    }
 
     clearCart();
     navigate("/order-success");
@@ -158,9 +156,7 @@ function OrderReview() {
             <p>{item.title}</p>
             <p>Qty: {item.qty}</p>
             <p className="price">
-              <span className="normal-price">
-                ₹{item.price * item.qty}
-              </span>
+              ₹{item.price * item.qty}
             </p>
           </div>
         </div>
@@ -221,7 +217,6 @@ function OrderReview() {
       >
         PLACE ORDER
       </button>
-
     </div>
   );
 }

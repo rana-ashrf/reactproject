@@ -1,61 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Coupons() {
   const [copiedCode, setCopiedCode] = useState(null);
+  const [coupons, setCoupons] = useState([]);
 
-  const coupons = [
-    {
-      code: "SAVE20",
-      description: "Get 20% off on orders above ₹1999",
-      expiry: "2025-12-31",
-      used: false
-    },
-    {
-      code: "FIRSTBUY",
-      description: "₹300 off on your first purchase",
-      expiry: "2025-01-05",
-      used: true
-    },
-    {
-      code: "FESTIVE10",
-      description: "Flat 10% off on festive collection",
-      expiry: "2024-12-10",
-      used: false
-    },
-    {
-      code: "NORETURN5OFF",
-      description: "Flat 5% off ",
-      expiry: "2026-02-10",
-      used: false
-    }
-  ];
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("coupons")) || [];
+    setCoupons(stored);
+  }, []);
 
-  // EXPIRY CHECK
-  const isExpired = (expiry) => {
-    return new Date(expiry) < new Date();
-  };
+  const isExpired = (expiry) =>
+    new Date(expiry) < new Date();
 
- 
   const handleCopy = (code) => {
     navigator.clipboard.writeText(code);
     setCopiedCode(code);
-
     setTimeout(() => setCopiedCode(null), 1500);
   };
 
   const availableCoupons = coupons.filter(
-    (c) => !c.used && !isExpired(c.expiry)
+    (c) => c.active && !c.used && !isExpired(c.expiry)
   );
 
   const otherCoupons = coupons.filter(
-    (c) => c.used || isExpired(c.expiry)
+    (c) => c.used || isExpired(c.expiry) || !c.active
   );
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20 px-4">
       <h2 className="text-xl font-semibold mb-6">My Coupons</h2>
 
-      {/* AVAILABLE COUPONS */}
       <h3 className="text-sm font-semibold mb-3">
         Available Coupons
       </h3>
@@ -85,7 +59,9 @@ function Coupons() {
               </div>
 
               <p className="text-sm mt-1">
-                {coupon.description}
+                {coupon.type === "percentage"
+                  ? `${coupon.value}% off`
+                  : `₹${coupon.value} off`}
               </p>
 
               <p className="text-xs text-gray-500 mt-1">
@@ -96,7 +72,6 @@ function Coupons() {
         </div>
       )}
 
-      {/* USED / EXPIRED COUPONS */}
       <h3 className="text-sm font-semibold mb-3">
         Used / Expired Coupons
       </h3>
@@ -110,14 +85,8 @@ function Coupons() {
             <h4 className="font-bold text-lg">
               {coupon.code}
             </h4>
-
             <p className="text-sm mt-1">
-              {coupon.description}
-            </p>
-
-            <p className="text-xs mt-1">
-              {coupon.used ? "Used" : "Expired"} • Expires on{" "}
-              {coupon.expiry}
+              {coupon.used ? "Used" : "Inactive / Expired"}
             </p>
           </div>
         ))}

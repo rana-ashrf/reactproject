@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import "../styles/AddAddress.css";
-import { useAuth } from "../Context/AuthContext"; // ✅ ADDED
+import { useAuth } from "../Context/AuthContext"; 
 
 function AddAddress() {
   const navigate = useNavigate();
-  const { user } = useAuth(); // ✅ ADDED
+  const { user } = useAuth(); 
 
   const saveAddress = (e) => {
     e.preventDefault();
