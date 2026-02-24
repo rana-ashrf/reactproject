@@ -1,62 +1,96 @@
-import { createContext, useContext, useState, useEffect, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect
+} from "react";
+import axios from "axios";
 import { useAuth } from "./AuthContext";
 
 const WishlistContext = createContext();
 
 export const WishlistProvider = ({ children }) => {
   const { user } = useAuth();
-
   const [wishlist, setWishlist] = useState([]);
 
-  const initializedRef = useRef(false);
-
-  // LOAD WISHLIST 
+  // LOAD WISHLIST
   useEffect(() => {
-    if (!user) return;
+    if (!user) {
+      setWishlist([]);
+      return;
+    }
 
-    const saved =
-      JSON.parse(localStorage.getItem(`wishlist_${user.id}`)) || [];
+    const fetchWishlist = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:5000/wishlist?userId=${user.id}`
+        );
+        setWishlist(res.data);
+      } catch (err) {
+        console.error("Failed to load wishlist", err);
+      }
+    };
 
-    setWishlist(saved);
-
- 
-    initializedRef.current = true;
+    fetchWishlist();
   }, [user]);
 
-  
-  useEffect(() => {
+  const toggleWishlist = async (product) => {
     if (!user) return;
-    if (!initializedRef.current) return;
 
-    localStorage.setItem(
-      `wishlist_${user.id}`,
-      JSON.stringify(wishlist)
-    );
-  }, [wishlist, user]);
-
-
-  const toggleWishlist = (product) => {
-    const exists = wishlist.some(
-      (item) => item.id === product.id
+    const exists = wishlist.find(
+      (item) => item.productId === product.id
     );
 
     if (exists) {
-      setWishlist(
-        wishlist.filter(
-          (item) => item.id !== product.id
-        )
-      );
+      try {
+        await axios.delete(
+          `http://localhost:5000/wishlist/${exists.id}`
+        );
+        setWishlist(
+          wishlist.filter((item) => item.id !== exists.id)
+        );
+      } catch (err) {
+        console.error("Failed to remove wishlist item", err);
+      }
     } else {
-      setWishlist([...wishlist, product]);
+      const payload = {
+        userId: user.id,
+        productId: product.id,
+        name: product.name,
+        image: product.image,
+        url: product.url,
+        price: product.price,
+        discount: product.discount || 0
+      };
+
+      try {
+        const res = await axios.post(
+          "http://localhost:5000/wishlist",
+          payload
+        );
+        setWishlist([...wishlist, res.data]);
+      } catch (err) {
+        console.error("Failed to add wishlist item", err);
+      }
     }
   };
 
-  const removeFromWishlist = (productId) => {
-    setWishlist(
-      wishlist.filter(
-        (item) => item.id !== productId
-      )
+  const removeFromWishlist = async (productId) => {
+    const exists = wishlist.find(
+      (item) => item.productId === productId
     );
+    if (!exists) return;
+
+    try {
+      await axios.delete(
+        `http://localhost:5000/wishlist/${exists.id}`
+      );
+      setWishlist(
+        wishlist.filter((i) => i.id !== exists.id)
+      );
+    } catch (err) {
+      console.error("Failed to remove wishlist item", err);
+    }
   };
 
   return (

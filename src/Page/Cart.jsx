@@ -19,12 +19,14 @@ function Cart() {
   return (
     <div className="cart-container">
       <Navbar textColor="black" />
-      <h2 className="text-xl font-semibold mt-18">Shopping Cart</h2>
+      <h2 className="text-xl font-semibold mt-18">
+        Shopping Cart
+      </h2>
 
       {cart.map((item) => (
         <Link
-          key={`${item.id}-${item.size}`}
-          to={`${item.url}/${item.id}`}
+          key={`${item.productId}-${item.size}`}
+          to={`${item.url}/${item.productId}`}
           className="cart-link"
         >
           <div className="cart-item">
@@ -34,7 +36,7 @@ function Cart() {
               <h4>{item.title}</h4>
               <p>Size: {item.size}</p>
 
-              {/*  PRICE */}
+              {/* PRICE */}
               <p className="price">
                 {item.originalPrice &&
                   item.originalPrice !== item.price && (
@@ -53,7 +55,11 @@ function Cart() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    updateQty(item.id, item.size, item.qty - 1);
+                    updateQty(
+                      item.productId,
+                      item.size,
+                      item.qty - 1
+                    );
                   }}
                 >
                   −
@@ -65,7 +71,11 @@ function Cart() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    updateQty(item.id, item.size, item.qty + 1);
+                    updateQty(
+                      item.productId,
+                      item.size,
+                      item.qty + 1
+                    );
                   }}
                 >
                   +
@@ -78,7 +88,7 @@ function Cart() {
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
-                  removeFromCart(item.id, item.size);
+                  removeFromCart(item.productId, item.size);
                 }}
               >
                 Remove

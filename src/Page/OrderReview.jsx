@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "../styles/OrderReview.css";
 import { useAuth } from "../Context/AuthContext";
+import axios from "axios";
 
 function OrderReview() {
   const { cart, clearCart } = useCart();
@@ -15,24 +16,44 @@ function OrderReview() {
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [coupons, setCoupons] = useState([]);
 
-  /* ================= LOAD COUPONS ================= */
+  const [address, setAddress] = useState(null); // 👈 address from json-server
+
+  /* ================= LOAD COUPONS (localStorage) ================= */
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("coupons")) || [];
-    setCoupons(stored);
-  }, []);
+  const fetchCoupons = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/coupons");
+      setCoupons(res.data);
+    } catch (err) {
+      console.error("Failed to load coupons:", err);
+    }
+  };
+  fetchCoupons();
+}, []);
+
+  /* ================= LOAD ADDRESS (json-server) ================= */
+  useEffect(() => {
+    if (!user) return;
+
+    const fetchAddress = async () => {
+      try {
+        // get default address for this user
+        const res = await axios.get(
+          `http://localhost:5000/addresses?userId=${user.id}&isDefault=true`
+        );
+        setAddress(res.data[0] || null);
+      } catch (err) {
+        console.error("Failed to load address:", err);
+      }
+    };
+
+    fetchAddress();
+  }, [user]);
 
   /* ================= TOTAL ================= */
-  const total = cart.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
+  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  const address = JSON.parse(
-    localStorage.getItem(`address_${user.id}`)
-  );
-
-  const isExpired = (expiry) =>
-    new Date(expiry) < new Date();
+  const isExpired = (expiry) => new Date(expiry) < new Date();
 
   /* ================= APPLY COUPON ================= */
   const applyCoupon = () => {
@@ -44,14 +65,11 @@ function OrderReview() {
 
     if (!coupon) return toast.error("Invalid coupon");
     if (coupon.used) return toast.error("Coupon already used");
-    if (isExpired(coupon.expiry))
-      return toast.error("Coupon expired");
+    if (isExpired(coupon.expiry)) return toast.error("Coupon expired");
 
-    /* ✅ MINIMUM ORDER CHECK (FIX) */
+    // ✅ Minimum order check
     if (total < coupon.minAmount) {
-      return toast.error(
-        `Minimum order ₹${coupon.minAmount} required`
-      );
+      return toast.error(`Minimum order ₹${coupon.minAmount} required`);
     }
 
     const discountAmount =
@@ -59,8 +77,7 @@ function OrderReview() {
         ? (total * coupon.value) / 100
         : coupon.value;
 
-    if (discountAmount <= 0)
-      return toast.error("Invalid discount");
+    if (discountAmount <= 0) return toast.error("Invalid discount");
 
     setDiscount(discountAmount);
     setAppliedCoupon(coupon.code);
@@ -77,54 +94,66 @@ function OrderReview() {
 
   const finalAmount = total - discount;
 
-  /* ================= PLACE ORDER ================= */
-  const placeOrder = () => {
+  /* ================= PLACE ORDER (JSON-SERVER) ================= */
+  const placeOrder = async () => {
     if (cart.length === 0) return;
 
-    const today = new Date();
-    const delivery = new Date();
-    delivery.setDate(today.getDate() + 7);
-
-    const newOrder = {
-      id: "ORD" + Date.now(),
-      items: cart,
-      status: "Placed",
-      orderDate: today.toDateString(),
-      deliveryDate: delivery.toDateString(),
-      totalAmount: finalAmount,
-      coupon: appliedCoupon,
-      discount,
-    };
-
-    const ordersKey = `orders_${user.id}`;
-    const existingOrders =
-      JSON.parse(localStorage.getItem(ordersKey)) || [];
-
-    localStorage.setItem(
-      ordersKey,
-      JSON.stringify([newOrder, ...existingOrders])
-    );
-
-    /* MARK COUPON AS USED */
-    if (appliedCoupon) {
-      const updatedCoupons = coupons.map((c) =>
-        c.code === appliedCoupon
-          ? { ...c, used: true }
-          : c
-      );
-      localStorage.setItem(
-        "coupons",
-        JSON.stringify(updatedCoupons)
-      );
+    if (!address) {
+      toast.error("Please add a delivery address");
+      return;
     }
 
-    clearCart();
-    navigate("/order-success");
+    try {
+      const today = new Date();
+      const delivery = new Date();
+      delivery.setDate(today.getDate() + 7);
+
+      const newOrder = {
+        // json-server will create numeric id
+        userId: user.id,
+        items: cart, // cart items snapshot
+        status: "Placed",
+        orderDate: today.toISOString(),      // ISO is good for sorting
+        deliveryDate: delivery.toISOString(),
+        totalAmount: finalAmount,
+        coupon: appliedCoupon,
+        discount,
+        address, // 👈 snapshot of current address object
+      };
+
+      // ✅ save to /orders in db.json
+      const res = await axios.post(
+        "http://localhost:5000/orders",
+        newOrder
+      );
+
+      // mark coupon as used (still in localStorage)
+      if (appliedCoupon) {
+  const coupon = coupons.find((c) => c.code === appliedCoupon);
+  if (coupon) {
+    await axios.patch(
+      `http://localhost:5000/coupons/${coupon.id}`,
+      { used: true }
+    );
+    setCoupons(
+      coupons.map((c) =>
+        c.id === coupon.id ? { ...c, used: true } : c
+      )
+    );
+  }
+}
+
+      clearCart();
+      toast.success(`Order #${res.data.id} placed successfully`);
+      navigate("/order-success");
+    } catch (err) {
+      console.error("Place order error:", err);
+      toast.error("Could not place order. Please try again.");
+    }
   };
 
   return (
     <div className="checkout-container">
-
       {/* ADDRESS */}
       <div
         className="address-card"
@@ -132,9 +161,15 @@ function OrderReview() {
       >
         {address ? (
           <>
-            <p><b>{address.name}</b></p>
-            <p>{address.house}, {address.area}</p>
-            <p>{address.city}, {address.state} - {address.pincode}</p>
+            <p>
+              <b>{address.name}</b>
+            </p>
+            <p>
+              {address.house}, {address.area}
+            </p>
+            <p>
+              {address.city}, {address.state} - {address.pincode}
+            </p>
             <p>📞 {address.phone}</p>
           </>
         ) : (
@@ -155,9 +190,7 @@ function OrderReview() {
           <div>
             <p>{item.title}</p>
             <p>Qty: {item.qty}</p>
-            <p className="price">
-              ₹{item.price * item.qty}
-            </p>
+            <p className="price">₹{item.price * item.qty}</p>
           </div>
         </div>
       ))}

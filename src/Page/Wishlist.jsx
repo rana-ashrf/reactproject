@@ -8,26 +8,43 @@ function Wishlist() {
   const { wishlist, removeFromWishlist } = useWishlist();
 
   if (wishlist.length === 0) {
-    return <h2 className="empty">Your wishlist is empty 🤍</h2>;
+    return (
+      <h2 className="empty">
+        Your wishlist is empty 🤍
+      </h2>
+    );
   }
 
   return (
-    <div className="wishlist-container pt-24" >
+    <div className="wishlist-container pt-24">
       <Navbar textColor="black" />
-      <h2 className="text-xl font-semibold mt-18">My Wishlist</h2>
+      <h2 className="text-xl font-semibold mt-18">
+        My Wishlist
+      </h2>
 
       <div className="wishlist-grid">
-        {wishlist.map(item => {
-          const hasDiscount = item.discount && item.discount > 0;
-          const finalPrice = getFinalPrice(item.price, item.discount);
+        {wishlist.map((item) => {
+          // ✅ make this a boolean, not 0/number
+          const hasDiscount = Number(item.discount) > 0;
+          const finalPrice = getFinalPrice(
+            item.price,
+            item.discount
+          );
 
           return (
-            <div className="wishlist-card" key={item.id}>
-              <Link to={`${item.url}/${item.id}`}>
+            <div
+              className="wishlist-card"
+              key={item.id}
+            >
+              <Link
+                to={`${item.url}/${item.productId}`}
+              >
                 <div className="wishlist-image-wrapper">
-  <img src={item.image} alt={item.name} />
-</div>
-
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                  />
+                </div>
               </Link>
 
               <div className="wishlist-info">
@@ -36,11 +53,15 @@ function Wishlist() {
                 {/* PRICE*/}
                 <p className="price">
                   {hasDiscount && (
-                    <span className="old-price">₹{item.price}</span>
+                    <span className="old-price">
+                      ₹{item.price}
+                    </span>
                   )}
                   <span
                     className={
-                      hasDiscount ? "new-price" : "normal-price"
+                      hasDiscount
+                        ? "new-price"
+                        : "normal-price"
                     }
                   >
                     ₹{finalPrice}
@@ -50,7 +71,9 @@ function Wishlist() {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    removeFromWishlist(item.id);
+                    removeFromWishlist(
+                      item.productId
+                    );
                   }}
                 >
                   Remove

@@ -38,7 +38,9 @@ function OuterDetails() {
     .filter(item => item.category === top.category && item.id !== top.id)
     .slice(0, 6);
 
-  const isWishlisted = wishlist.some(item => item.id === top.id);
+  const isWishlisted = wishlist.some(
+  (item) => item.productId === top.id
+);
   
    const hasDiscount = top.discount && top.discount > 0;
     const finalPrice = getFinalPrice(top.price, top.discount);

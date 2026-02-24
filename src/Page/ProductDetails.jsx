@@ -39,7 +39,9 @@ function ProductDetails() {
     .filter(item => item.id !== product.id)
     .slice(0, 6);
 
-  const isWishlisted = wishlist.some(item => item.id === product.id);
+  const isWishlisted = wishlist.some(
+  (item) => item.productId === product.id
+);
 
   const handleAddToCart = () => {
     if (!selectedSize) {

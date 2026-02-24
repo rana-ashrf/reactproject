@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Coupons() {
   const [copiedCode, setCopiedCode] = useState(null);
   const [coupons, setCoupons] = useState([]);
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("coupons")) || [];
-    setCoupons(stored);
+    const fetchCoupons = async () => {
+      const res = await axios.get(
+        "http://localhost:5000/coupons"
+      );
+      setCoupons(res.data);
+    };
+    fetchCoupons();
   }, []);
 
   const isExpired = (expiry) =>
@@ -23,12 +29,15 @@ function Coupons() {
   );
 
   const otherCoupons = coupons.filter(
-    (c) => c.used || isExpired(c.expiry) || !c.active
+    (c) =>
+      c.used || isExpired(c.expiry) || !c.active
   );
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20 px-4">
-      <h2 className="text-xl font-semibold mb-6">My Coupons</h2>
+      <h2 className="text-xl font-semibold mb-6">
+        My Coupons
+      </h2>
 
       <h3 className="text-sm font-semibold mb-3">
         Available Coupons
@@ -42,7 +51,7 @@ function Coupons() {
         <div className="space-y-4 mb-8">
           {availableCoupons.map((coupon) => (
             <div
-              key={coupon.code}
+              key={coupon.id}
               className="bg-white p-4 rounded-xl border border-dashed border-black"
             >
               <div className="flex justify-between items-center">
@@ -51,10 +60,14 @@ function Coupons() {
                 </h4>
 
                 <button
-                  onClick={() => handleCopy(coupon.code)}
+                  onClick={() =>
+                    handleCopy(coupon.code)
+                  }
                   className="text-sm px-3 py-1 border border-black rounded-full"
                 >
-                  {copiedCode === coupon.code ? "Copied" : "Copy"}
+                  {copiedCode === coupon.code
+                    ? "Copied"
+                    : "Copy"}
                 </button>
               </div>
 
@@ -79,14 +92,16 @@ function Coupons() {
       <div className="space-y-4">
         {otherCoupons.map((coupon) => (
           <div
-            key={coupon.code}
+            key={coupon.id}
             className="bg-gray-200 p-4 rounded-xl opacity-60"
           >
             <h4 className="font-bold text-lg">
               {coupon.code}
             </h4>
             <p className="text-sm mt-1">
-              {coupon.used ? "Used" : "Inactive / Expired"}
+              {coupon.used
+                ? "Used"
+                : "Inactive / Expired"}
             </p>
           </div>
         ))}

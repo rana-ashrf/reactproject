@@ -73,7 +73,7 @@
       "email": "fathi1@gmail.com",
       "phone": "3333333333",
       "password": "Fathi@1",
-      "blocked": true
+      "blocked": false
     }
   ],
   "dresses": [
@@ -108,7 +108,7 @@
       ],
       "image": "/images/mini3.jpg",
       "url": "/dresses",
-      "discount": 0
+      "discount": 20
     },
     {
       "id": "4",
@@ -2593,6 +2593,297 @@
       "image": "/images/blazer10.jpeg",
       "url": "/outerwear",
       "discount": 20
+    }
+  ],
+  "cart": [],
+  "wishlist": [
+    {
+      "id": "0a8b",
+      "userId": "6ea4",
+      "productId": "35",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "image": "/images/Aline11.jpg",
+      "url": "/dresses",
+      "price": 1899,
+      "discount": 0
+    },
+    {
+      "id": "97a2",
+      "userId": "6ea4",
+      "productId": "39",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "image": "/images/Tops4.jpg",
+      "url": "/Tops",
+      "price": 1202,
+      "discount": 0
+    },
+    {
+      "id": "3fa4",
+      "userId": "6ea4",
+      "productId": "139",
+      "name": "Wool Blend Coat",
+      "image": "/images/coat3.jpeg",
+      "url": "/outerwear",
+      "price": 1890,
+      "discount": 50
+    },
+    {
+      "id": "20cf",
+      "userId": "6ea4",
+      "productId": "50",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "image": "/images/Tops15.jpg",
+      "url": "/Tops",
+      "price": 1239,
+      "discount": 0
+    },
+    {
+      "id": "b4a4",
+      "userId": "6ea4",
+      "productId": "52",
+      "name": "Ladies Elegant Solid Color flare Sleeve dress",
+      "image": "/images/blouse3.jpg",
+      "url": "/Tops",
+      "price": 945,
+      "discount": 0
+    }
+  ],
+  "addresses": [
+    {
+      "id": "c821",
+      "name": "RANA FATHIMA K P",
+      "phone": "97483628493",
+      "house": "800",
+      "area": "nnnn",
+      "city": "kannur",
+      "state": "kerala",
+      "pincode": "670602",
+      "userId": "6ea4",
+      "isDefault": true
+    },
+    {
+      "id": "ce72",
+      "name": "RANA FATHIMA K P",
+      "phone": "97483628493",
+      "house": "122",
+      "area": "manna",
+      "city": "kannur",
+      "state": "kerala",
+      "pincode": "670602",
+      "userId": "6ea4",
+      "isDefault": true
+    },
+    {
+      "id": "7e21",
+      "name": "RANA FATHIMA K P",
+      "phone": "97483628493",
+      "house": "122",
+      "area": "manna",
+      "city": "kannur",
+      "state": "kerala",
+      "pincode": "670602",
+      "userId": "6ea4",
+      "isDefault": true
+    },
+    {
+      "id": "7304",
+      "name": "RANA FATHIMA K P",
+      "phone": "97483628493",
+      "house": "122",
+      "area": "nnnn",
+      "city": "kannur",
+      "state": "kerala",
+      "pincode": "670602",
+      "userId": "6ea4",
+      "isDefault": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "750a",
+      "userId": "6ea4",
+      "items": [
+        {
+          "id": "eee9",
+          "userId": "6ea4",
+          "productId": "35",
+          "title": "Ladies Elegant Solid Color flare Sleeve dress",
+          "image": "/images/Aline11.jpg",
+          "url": "/dresses",
+          "size": "S",
+          "qty": 1,
+          "price": 1899,
+          "originalPrice": 1899,
+          "returnStatus": "Returned"
+        },
+        {
+          "id": "93ca",
+          "userId": "6ea4",
+          "productId": "139",
+          "title": "Wool Blend Coat",
+          "image": "/images/coat3.jpeg",
+          "url": "/outerwear",
+          "size": "S",
+          "qty": 1,
+          "price": 945,
+          "originalPrice": 1890
+        },
+        {
+          "id": "10b7",
+          "userId": "6ea4",
+          "productId": "50",
+          "title": "Ladies Elegant Solid Color flare Sleeve dress",
+          "image": "/images/Tops15.jpg",
+          "url": "/Tops",
+          "size": "M",
+          "qty": 1,
+          "price": 1239,
+          "originalPrice": 1239
+        }
+      ],
+      "status": "Cancelled",
+      "orderDate": "Tue Feb 24 2026",
+      "deliveryDate": "Tue Mar 03 2026",
+      "totalAmount": 4083,
+      "coupon": null,
+      "discount": 0,
+      "addressId": "c821"
+    },
+    {
+      "id": "5a09",
+      "userId": "6ea4",
+      "items": [
+        {
+          "id": "cc1a",
+          "userId": "6ea4",
+          "productId": "93",
+          "title": "Korean Pleated Loose Fit Pants",
+          "image": "/images/pant2.jpg",
+          "url": "/bottoms",
+          "size": "M",
+          "qty": 1,
+          "price": 999,
+          "originalPrice": 999
+        }
+      ],
+      "status": "Shipped",
+      "orderDate": "2026-02-24T09:01:27.762Z",
+      "deliveryDate": "2026-03-03T09:01:27.762Z",
+      "totalAmount": 999,
+      "coupon": null,
+      "discount": 0,
+      "address": {
+        "id": "c821",
+        "name": "RANA FATHIMA K P",
+        "phone": "97483628493",
+        "house": "800",
+        "area": "nnnn",
+        "city": "kannur",
+        "state": "kerala",
+        "pincode": "670602",
+        "userId": "6ea4",
+        "isDefault": true
+      }
+    },
+    {
+      "id": "1902",
+      "userId": "6ea4",
+      "items": [
+        {
+          "id": "6ed3",
+          "userId": "6ea4",
+          "productId": "50",
+          "title": "Ladies Elegant Solid Color flare Sleeve dress",
+          "image": "/images/Tops15.jpg",
+          "url": "/Tops",
+          "size": "M",
+          "qty": 1,
+          "price": 1239,
+          "originalPrice": 1239
+        }
+      ],
+      "status": "Placed",
+      "orderDate": "2026-02-24T09:19:59.852Z",
+      "deliveryDate": "2026-03-03T09:19:59.852Z",
+      "totalAmount": 1239,
+      "coupon": null,
+      "discount": 0,
+      "address": {
+        "id": "c821",
+        "name": "RANA FATHIMA K P",
+        "phone": "97483628493",
+        "house": "800",
+        "area": "nnnn",
+        "city": "kannur",
+        "state": "kerala",
+        "pincode": "670602",
+        "userId": "6ea4",
+        "isDefault": true
+      }
+    },
+    {
+      "id": "bcf9",
+      "userId": "6ea4",
+      "items": [
+        {
+          "id": "8bd0",
+          "userId": "6ea4",
+          "productId": "35",
+          "title": "Ladies Elegant Solid Color flare Sleeve dress",
+          "image": "/images/Aline11.jpg",
+          "url": "/dresses",
+          "size": "M",
+          "qty": 1,
+          "price": 1899,
+          "originalPrice": 1899
+        }
+      ],
+      "status": "Placed",
+      "orderDate": "2026-02-24T09:20:48.016Z",
+      "deliveryDate": "2026-03-03T09:20:48.016Z",
+      "totalAmount": 1709.1,
+      "coupon": "NEW",
+      "discount": 189.9,
+      "address": {
+        "id": "c821",
+        "name": "RANA FATHIMA K P",
+        "phone": "97483628493",
+        "house": "800",
+        "area": "nnnn",
+        "city": "kannur",
+        "state": "kerala",
+        "pincode": "670602",
+        "userId": "6ea4",
+        "isDefault": true
+      }
+    }
+  ],
+  "returns": [
+    {
+      "id": "06c3",
+      "userId": "6ea4",
+      "orderId": "750a",
+      "productId": "35",
+      "productName": "Ladies Elegant Solid Color flare Sleeve dress",
+      "image": "/images/Aline11.jpg",
+      "size": "S",
+      "qty": 1,
+      "orderDate": "Tue Feb 24 2026",
+      "reason": "Size issue",
+      "status": "Return Requested",
+      "refund": null
+    }
+  ],
+  "coupons": [
+    {
+      "id": "bf0e",
+      "code": "NEW",
+      "type": "percentage",
+      "value": 10,
+      "minAmount": 1499,
+      "expiry": "2026-03-05",
+      "used": true,
+      "active": true
     }
   ]
 }

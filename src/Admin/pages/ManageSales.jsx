@@ -25,6 +25,7 @@ function ManageSales() {
     loadCoupons();
   }, []);
 
+  /* =========== PRODUCTS (unchanged) =========== */
   const loadProducts = async () => {
     let all = [];
     for (let cat of CATEGORIES) {
@@ -41,11 +42,6 @@ function ManageSales() {
     setProducts(all);
   };
 
-  const loadCoupons = () => {
-    const stored = JSON.parse(localStorage.getItem("coupons")) || [];
-    setCoupons(stored);
-  };
-
   const updateDiscount = async (product, value) => {
     await axios.patch(
       `http://localhost:5000/${product.category}/${product.id}`,
@@ -54,7 +50,13 @@ function ManageSales() {
     loadProducts();
   };
 
-  const saveCoupon = () => {
+  /* =========== COUPONS NOW FROM JSON-SERVER =========== */
+  const loadCoupons = async () => {
+    const res = await axios.get("http://localhost:5000/coupons");
+    setCoupons(res.data);
+  };
+
+  const saveCoupon = async () => {
     if (!couponForm.code || !couponForm.value || !couponForm.expiry) {
       alert("All fields required");
       return;
@@ -62,16 +64,19 @@ function ManageSales() {
 
     const newCoupon = {
       ...couponForm,
+      code: couponForm.code.toUpperCase(),
       value: Number(couponForm.value),
       minAmount: Number(couponForm.minAmount) || 0,
       used: false,
       active: true,
     };
 
-    const updated = [newCoupon, ...coupons];
-    localStorage.setItem("coupons", JSON.stringify(updated));
-    setCoupons(updated);
+    await axios.post("http://localhost:5000/coupons", newCoupon);
 
+    // reload from server
+    await loadCoupons();
+
+    // reset form + close
     setCouponForm({
       code: "",
       type: "percentage",
@@ -79,24 +84,24 @@ function ManageSales() {
       minAmount: "",
       expiry: "",
     });
-
     setShowCouponModal(false);
   };
 
-  const toggleCoupon = (index) => {
-    const updated = [...coupons];
-    updated[index].active = !updated[index].active;
-    localStorage.setItem("coupons", JSON.stringify(updated));
-    setCoupons(updated);
+  const toggleCoupon = async (coupon) => {
+    await axios.patch(
+      `http://localhost:5000/coupons/${coupon.id}`,
+      { active: !coupon.active }
+    );
+    loadCoupons();
   };
 
-  const deleteCoupon = (index) => {
+  const deleteCoupon = async (coupon) => {
     if (!window.confirm("Do you want to delete this coupon?")) return;
-    const updated = coupons.filter((_, i) => i !== index);
-    localStorage.setItem("coupons", JSON.stringify(updated));
-    setCoupons(updated);
+    await axios.delete(`http://localhost:5000/coupons/${coupon.id}`);
+    loadCoupons();
   };
 
+  /* =========== PRODUCT TABLE FILTER/PAGINATION =========== */
   const filteredProducts = products.filter((p) =>
     p.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -187,13 +192,16 @@ function ManageSales() {
         <section style={{ ...card, marginTop: 40 }}>
           <div style={flexBetween}>
             <h3 style={sectionTitle}>Coupons</h3>
-            <button onClick={() => setShowCouponModal(true)} style={btnPrimary}>
+            <button
+              onClick={() => setShowCouponModal(true)}
+              style={btnPrimary}
+            >
               + Add Coupon
             </button>
           </div>
 
-          {coupons.map((c, i) => (
-            <div key={i} style={couponCard}>
+          {coupons.map((c) => (
+            <div key={c.id} style={couponCard}>
               <div>
                 <b style={{ fontSize: 18 }}>{c.code}</b>
                 <p style={{ margin: "6px 0" }}>
@@ -208,7 +216,7 @@ function ManageSales() {
 
               <div style={{ display: "flex", gap: 8 }}>
                 <button
-                  onClick={() => toggleCoupon(i)}
+                  onClick={() => toggleCoupon(c)}
                   style={{
                     ...btnPrimary,
                     background: c.active
@@ -220,7 +228,7 @@ function ManageSales() {
                 </button>
 
                 <button
-                  onClick={() => deleteCoupon(i)}
+                  onClick={() => deleteCoupon(c)}
                   style={btnGrey}
                 >
                   Delete
@@ -289,7 +297,10 @@ function ManageSales() {
                 <button style={btnPrimary} onClick={saveCoupon}>
                   Save
                 </button>
-                <button style={btnGrey} onClick={() => setShowCouponModal(false)}>
+                <button
+                  style={btnGrey}
+                  onClick={() => setShowCouponModal(false)}
+                >
                   Cancel
                 </button>
               </div>

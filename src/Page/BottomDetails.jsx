@@ -24,9 +24,15 @@ function BottomDetails() {
   useEffect(() => {
     
     axios
-      .get(`http://localhost:5000/bottoms/${id}`)
-      .then((res) => setBottom(res.data))
-      .catch((err) => console.error(err));
+  .get(`http://localhost:5000/bottoms/${id}`)
+  .then((res) => {
+    if (res.data.active === false) {
+      navigate("/bottoms"); // redirect if product disabled
+      return;
+    }
+    setBottom(res.data);
+  })
+
 
    
     axios
@@ -41,15 +47,17 @@ function BottomDetails() {
 
 
   const related = allBottoms
-    .filter(
-      (item) =>
-        item.category === bottom.category && item.id !== bottom.id
-    )
-    .slice(0, 6);
+  .filter((item) =>
+    item.active !== false &&
+    item.category === bottom.category &&
+    item.id !== bottom.id
+  )
+  .slice(0, 6);
+
 
   const isWishlisted = wishlist.some(
-    (item) => item.id === bottom.id
-  );
+  (item) => item.productId === bottom.id
+);
 
   const hasDiscount = bottom.discount && bottom.discount > 0;
     const finalPrice = getFinalPrice(bottom.price, bottom.discount);

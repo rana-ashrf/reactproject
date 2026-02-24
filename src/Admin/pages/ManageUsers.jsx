@@ -15,22 +15,25 @@ function ManageUsers() {
   }, []);
 
   const fetchUsers = async () => {
-    const res = await axios.get("http://localhost:5000/users");
+    // ✅ Load users + orders from json-server
+    const [usersRes, ordersRes] = await Promise.all([
+      axios.get("http://localhost:5000/users"),
+      axios.get("http://localhost:5000/orders"),
+    ]);
 
-    const enriched = res.data.map((u) => {
-      const orders =
-        JSON.parse(localStorage.getItem(`orders_${u.id}`)) || [];
+    const orders = ordersRes.data;
 
-      const totalSpent = orders.reduce(
-        (sum, o) =>
-          sum +
-          o.items.reduce((s, i) => s + i.price * i.qty, 0),
+    const enriched = usersRes.data.map((u) => {
+      const userOrders = orders.filter((o) => o.userId === u.id);
+
+      const totalSpent = userOrders.reduce(
+        (sum, o) => sum + (o.totalAmount || 0),
         0
       );
 
       return {
         ...u,
-        ordersCount: orders.length,
+        ordersCount: userOrders.length,
         totalSpent,
         status: u.blocked ? "Blocked" : "Active",
       };
@@ -55,10 +58,9 @@ function ManageUsers() {
   const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
 
   const toggleBlock = async (user) => {
-    await axios.patch(
-      `http://localhost:5000/users/${user.id}`,
-      { blocked: !user.blocked }
-    );
+    await axios.patch(`http://localhost:5000/users/${user.id}`, {
+      blocked: !user.blocked,
+    });
     fetchUsers();
   };
 
@@ -72,7 +74,12 @@ function ManageUsers() {
         <div style={statsGrid}>
           <StatCard label="Total Users" value={totalUsers} icon="👥" bg="#eef2ff" />
           <StatCard label="Active Users" value={activeUsers} icon="✅" bg="#dcfce7" />
-          <StatCard label="Blocked Users" value={blockedUsers} icon="🚫" bg="#fee2e2" />
+          <StatCard
+            label="Blocked Users"
+            value={blockedUsers}
+            icon="🚫"
+            bg="#fee2e2"
+          />
         </div>
 
         <input
@@ -130,10 +137,7 @@ function ManageUsers() {
                     <button style={viewBtn} onClick={() => setViewUser(u)}>
                       View
                     </button>
-                    <button
-                      style={blockBtn}
-                      onClick={() => toggleBlock(u)}
-                    >
+                    <button style={blockBtn} onClick={() => toggleBlock(u)}>
                       {u.blocked ? "Unblock" : "Block"}
                     </button>
                   </td>
@@ -159,8 +163,7 @@ function ManageUsers() {
                 onClick={() => setCurrentPage(i + 1)}
                 style={{
                   ...pageBtn,
-                  background:
-                    currentPage === i + 1 ? "#6366f1" : "#e5e7eb",
+                  background: currentPage === i + 1 ? "#6366f1" : "#e5e7eb",
                   color: currentPage === i + 1 ? "white" : "#111",
                 }}
               >
@@ -178,12 +181,7 @@ function ManageUsers() {
           </button>
         </div>
 
-        {viewUser && (
-          <ViewUserModal
-            user={viewUser}
-            onClose={() => setViewUser(null)}
-          />
-        )}
+        {viewUser && <ViewUserModal user={viewUser} onClose={() => setViewUser(null)} />}
       </main>
     </div>
   );
@@ -205,12 +203,24 @@ const ViewUserModal = ({ user, onClose }) => (
   <div style={overlay}>
     <div style={modal}>
       <h2>User Details</h2>
-      <p><b>Name:</b> {user.username}</p>
-      <p><b>Email:</b> {user.email}</p>
-      <p><b>Phone:</b> {user.phone}</p>
-      <p><b>Orders:</b> {user.ordersCount}</p>
-      <p><b>Total Spent:</b> ₹{user.totalSpent}</p>
-      <button style={closeBtn} onClick={onClose}>Close</button>
+      <p>
+        <b>Name:</b> {user.username}
+      </p>
+      <p>
+        <b>Email:</b> {user.email}
+      </p>
+      <p>
+        <b>Phone:</b> {user.phone}
+      </p>
+      <p>
+        <b>Orders:</b> {user.ordersCount}
+      </p>
+      <p>
+        <b>Total Spent:</b> ₹{user.totalSpent}
+      </p>
+      <button style={closeBtn} onClick={onClose}>
+        Close
+      </button>
     </div>
   </div>
 );
@@ -275,12 +285,12 @@ const table = {
 
 const thead = {
   background: "#e0e7ff",
-  height:"50px"
+  height: "50px",
 };
 
 const row = {
   transition: "background 0.2s",
-  height:"50px"
+  height: "50px",
 };
 
 const badge = {

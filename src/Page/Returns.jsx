@@ -1,14 +1,59 @@
 import { useNavigate } from "react-router-dom";
+import "../styles/MyOrders.css"; // or your returns css
 import { useAuth } from "../Context/AuthContext";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Returns() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  // ✅ FIXED: user-specific returns
-  const returnsKey = `returns_${user.id}`;
-  const returns =
-    JSON.parse(localStorage.getItem(returnsKey)) || [];
+  const [returnsList, setReturnsList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!user) return; // safety
+
+    const fetchReturns = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          `http://localhost:5000/returns?userId=${user.id}`
+        );
+
+        // optional: latest returns first
+        const sorted = [...res.data].sort(
+          (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
+        );
+
+        setReturnsList(sorted);
+      } catch (err) {
+        console.error("Error fetching returns:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReturns();
+  }, [user]);
+
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-100 pt-24 pb-20 px-4">
+        <h2 className="text-center text-gray-700">
+          Please login to view your returns.
+        </h2>
+      </div>
+    );
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100 pt-24 pb-20 px-4">
+        <p className="text-center text-gray-600">Loading your returns...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 pb-20 px-4">
@@ -19,22 +64,18 @@ function Returns() {
         >
           ← Back
         </button>
-        <h2 className="text-xl font-semibold">
-          My Returns
-        </h2>
+        <h2 className="text-xl font-semibold">My Returns</h2>
       </div>
 
-      {returns.length === 0 ? (
+      {returnsList.length === 0 ? (
         <div className="bg-white p-6 rounded-xl text-center">
-          <p className="text-gray-600">
-            You have no returns yet.
-          </p>
+          <p className="text-gray-600">You have no returns yet.</p>
         </div>
       ) : (
         <div className="space-y-4">
-          {returns.map((item, index) => (
+          {returnsList.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="bg-white p-4 rounded-xl flex gap-4"
             >
               <img
@@ -44,16 +85,17 @@ function Returns() {
               />
 
               <div className="flex-1">
-                <h3 className="font-semibold">
-                  {item.productName}
-                </h3>
+                <h3 className="font-semibold">{item.productName}</h3>
 
                 <p className="text-sm text-gray-500">
                   Order ID: #{item.orderId}
                 </p>
 
                 <p className="text-sm text-gray-500">
-                  Ordered on {item.orderDate}
+                  Ordered on{" "}
+                  {item.orderDate
+                    ? new Date(item.orderDate).toDateString()
+                    : item.orderDate}
                 </p>
 
                 <p className="text-sm">

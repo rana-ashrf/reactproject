@@ -2,85 +2,108 @@ import { useNavigate } from "react-router-dom";
 import "../styles/MyOrders.css";
 import { useAuth } from "../Context/AuthContext";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function MyOrders() {
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const ordersKey = `orders_${user.id}`;
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedOrders =
-      JSON.parse(localStorage.getItem(ordersKey)) || [];
-    setOrders(storedOrders);
-  }, [ordersKey]);
+    if (!user) return; // safety: if not logged in yet, don't call
 
-  /* ---------------- CANCEL ORDER ---------------- */
-  const cancelOrder = (orderId) => {
-    const updatedOrders = orders.map((order) =>
-      order.id === orderId
-        ? { ...order, status: "Cancelled" }
-        : order
-    );
+    const fetchOrders = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get(
+          `http://localhost:5000/orders?userId=${user.id}`
+        );
 
-    localStorage.setItem(
-      ordersKey,
-      JSON.stringify(updatedOrders)
-    );
-    setOrders(updatedOrders);
-  };
+        // sort by date: latest first
+        const sorted = [...res.data].sort(
+          (a, b) => new Date(b.orderDate) - new Date(a.orderDate)
+        );
 
-  /* ---------------- RETURN PRODUCT ---------------- */
-  const handleReturn = (order, item) => {
-    const returnsKey = `returns_${user.id}`;
-    const ordersKey = `orders_${user.id}`;
-
-    /* 1️⃣ SAVE RETURN */
-    const existingReturns =
-      JSON.parse(localStorage.getItem(returnsKey)) || [];
-
-    const returnData = {
-      orderId: order.id,
-      productId: item.id,
-      productName: item.title,
-      image: item.image,
-      size: item.size,
-      qty: item.qty,
-      orderDate: order.orderDate,
-      reason: "Size issue",
-      status: "Return Requested",
-      refund: null,
+        setOrders(sorted);
+      } catch (err) {
+        console.error("Error fetching orders:", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    localStorage.setItem(
-      returnsKey,
-      JSON.stringify([returnData, ...existingReturns])
-    );
+    fetchOrders();
+  }, [user]);
 
-    /* 2️⃣ UPDATE ORDER ITEM STATUS */
-    const updatedOrders = orders.map((o) => {
-      if (o.id === order.id) {
-        return {
-          ...o,
-          items: o.items.map((i) =>
-            i.id === item.id && i.size === item.size
-              ? { ...i, returnStatus: "Returned" }
-              : i
-          ),
-        };
-      }
-      return o;
-    });
+  const cancelOrder = async (orderId) => {
+    const order = orders.find((o) => o.id === orderId);
+    if (!order) return;
 
-    localStorage.setItem(
-      ordersKey,
-      JSON.stringify(updatedOrders)
-    );
-
-    navigate("/returns");
+    try {
+      const res = await axios.patch(
+        `http://localhost:5000/orders/${orderId}`,
+        { status: "Cancelled" }
+      );
+      setOrders(orders.map((o) => (o.id === orderId ? res.data : o)));
+    } catch (err) {
+      console.error("Cancel error:", err);
+    }
   };
 
+  const handleReturn = async (order, item) => {
+    try {
+      const returnData = {
+        userId: user.id,
+        orderId: order.id,
+        productId: item.productId,
+        productName: item.title,
+        image: item.image,
+        size: item.size,
+        qty: item.qty,
+        orderDate: order.orderDate,
+        reason: "Size issue",
+        status: "Return Requested",
+        refund: null,
+      };
+
+      // save return request in json-server
+      await axios.post("http://localhost:5000/returns", returnData);
+
+      const updatedOrder = {
+        ...order,
+        items: order.items.map((i) =>
+          i.productId === item.productId && i.size === item.size
+            ? { ...i, returnStatus: "Returned" }
+            : i
+        ),
+      };
+
+      await axios.put(
+        `http://localhost:5000/orders/${order.id}`,
+        updatedOrder
+      );
+
+      setOrders(orders.map((o) => (o.id === order.id ? updatedOrder : o)));
+
+      navigate("/returns");
+    } catch (err) {
+      console.error("Return error:", err);
+    }
+  };
+
+  if (!user) {
+    return (
+      <h2 className="empty">
+        Please login to view your orders 🧾
+      </h2>
+    );
+  }
+
+  if (loading) {
+    return <h2 className="empty">Loading your orders...</h2>;
+  }
 
   if (orders.length === 0) {
     return <h2 className="empty">No orders yet 📦</h2>;
@@ -99,13 +122,23 @@ function MyOrders() {
             <p className="status">{order.status}</p>
           </div>
 
-          <p>Order Date: {order.orderDate}</p>
-          <p>Expected Delivery: {order.deliveryDate}</p>
+          <p>
+            Order Date:{" "}
+            {order.orderDate
+              ? new Date(order.orderDate).toDateString()
+              : order.orderDate}
+          </p>
+          <p>
+            Expected Delivery:{" "}
+            {order.deliveryDate
+              ? new Date(order.deliveryDate).toDateString()
+              : order.deliveryDate}
+          </p>
 
           {order.items.map((item) => (
             <div
               className="order-item"
-              key={item.id + item.size}
+              key={item.productId + item.size}
             >
               <img src={item.image} alt={item.title} />
               <div>
@@ -114,19 +147,6 @@ function MyOrders() {
                 <p>Qty: {item.qty}</p>
                 <p>₹{item.price * item.qty}</p>
 
-                {/* ✅ RETURN STATUS */}
-                {item.returned && (
-                  <p
-                    style={{
-                      color: "green",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Returned
-                  </p>
-                )}
-
-                {/* ✅ RETURN BUTTON */}
                 {item.returnStatus === "Returned" ? (
                   <span className="text-sm text-green-600 font-medium">
                     Returned
@@ -141,12 +161,10 @@ function MyOrders() {
                     </button>
                   )
                 )}
-
               </div>
             </div>
           ))}
 
-          {/* CANCEL */}
           {order.status === "Placed" && (
             <button
               className="cancel-btn"

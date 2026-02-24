@@ -53,12 +53,14 @@ function Bottoms() {
 
   /* FILTER  */
   let filtered = bottoms.filter((item) =>
-    (category === "All" || item.category === category) &&
-    (!color || item.color === color) &&
-    (!size || item.size.includes(size)) &&
-    item.price >= min &&
-    item.price <= max
-  );
+  item.active !== false &&                   // <-- ADD THIS
+  (category === "All" || item.category === category) &&
+  (!color || item.color === color) &&
+  (!size || item.size.includes(size)) &&
+  item.price >= min &&
+  item.price <= max
+);
+
 
   /* SORTING */
   if (sort === "low-high") {

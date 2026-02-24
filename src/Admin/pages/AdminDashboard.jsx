@@ -39,9 +39,11 @@ function AdminDashboard() {
   }, [salesView]);
 
   const loadDashboardData = async () => {
+    // USERS
     const usersRes = await axios.get("http://localhost:5000/users");
     const users = usersRes.data;
 
+    // PRODUCTS
     const categories = ["dresses", "Tops", "bottoms", "knitwear", "outerwear"];
     let allProducts = [];
 
@@ -50,21 +52,34 @@ function AdminDashboard() {
       allProducts = [...allProducts, ...res.data];
     }
 
-    let allOrders = [];
-    users.forEach((u) => {
-      const userOrders =
-        JSON.parse(localStorage.getItem(`orders_${u.id}`)) || [];
-      userOrders.forEach((o) => {
-        allOrders.push({ ...o, customerName: u.username });
-      });
+    // ✅ ORDERS FROM JSON-SERVER
+    const ordersRes = await axios.get("http://localhost:5000/orders");
+    const allOrdersRaw = ordersRes.data;
+
+    // Attach customer name for display
+    const allOrders = allOrdersRaw.map((o) => {
+      const user = users.find((u) => u.id === o.userId);
+      return {
+        ...o,
+        customerName: user ? user.username : "Unknown",
+      };
     });
 
+    // REVENUE – sum only delivered orders
     const revenue = allOrders.reduce(
-      (sum, o) => (o.status === "Delivered" ? sum + o.totalAmount : sum),
+      (sum, o) => (o.status === "Delivered" ? sum + (o.totalAmount || 0) : sum),
       0
     );
 
-    const ship = { placed: 0, shipped: 0, delivered: 0, cancelled: 0, returned: 0 };
+    // SHIPMENT COUNTS
+    const ship = {
+      placed: 0,
+      shipped: 0,
+      delivered: 0,
+      cancelled: 0,
+      returned: 0,
+    };
+
     allOrders.forEach((o) => {
       if (o.status === "Placed") ship.placed++;
       if (o.status === "Shipped") ship.shipped++;
@@ -82,8 +97,9 @@ function AdminDashboard() {
       revenue,
     });
 
+    // RECENT ORDERS (latest 5)
     setRecentOrders(
-      allOrders
+      [...allOrders]
         .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
         .slice(0, 5)
     );
@@ -95,12 +111,25 @@ function AdminDashboard() {
     const delivered = orders.filter((o) => o.status === "Delivered");
 
     if (view === "monthly") {
-      const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      const months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
       const map = {};
       months.forEach((m) => (map[m] = 0));
       delivered.forEach((o) => {
         const m = months[new Date(o.orderDate).getMonth()];
-        map[m] += o.totalAmount;
+        map[m] += o.totalAmount || 0;
       });
       return months.map((m) => ({ name: m, sales: map[m] }));
     }
@@ -110,25 +139,26 @@ function AdminDashboard() {
       const map = {};
       delivered.forEach((o) => {
         const d = days[new Date(o.orderDate).getDay()];
-        map[d] = (map[d] || 0) + o.totalAmount;
+        map[d] = (map[d] || 0) + (o.totalAmount || 0);
       });
       return Object.keys(map).map((d) => ({ name: d, sales: map[d] }));
     }
 
+    // yearly
     const map = {};
     delivered.forEach((o) => {
       const y = new Date(o.orderDate).getFullYear();
-      map[y] = (map[y] || 0) + o.totalAmount;
+      map[y] = (map[y] || 0) + (o.totalAmount || 0);
     });
     return Object.keys(map).map((y) => ({ name: y, sales: map[y] }));
   };
 
   const totalShipments =
     shipment.placed +
-    shipment.shipped +
-    shipment.delivered +
-    shipment.cancelled +
-    shipment.returned || 1;
+      shipment.shipped +
+      shipment.delivered +
+      shipment.cancelled +
+      shipment.returned || 1;
 
   const pPlaced = (shipment.placed / totalShipments) * 100;
   const pShipped = (shipment.shipped / totalShipments) * 100;
@@ -160,7 +190,9 @@ function AdminDashboard() {
   };
 
   return (
-    <div style={{ display: "flex", background: "#f3f4f6", minHeight: "100vh" }}>
+    <div
+      style={{ display: "flex", background: "#f3f4f6", minHeight: "100vh" }}
+    >
       <AdminSidebar />
 
       <main style={{ marginLeft: 260, padding: 30, width: "100%" }}>
@@ -169,7 +201,11 @@ function AdminDashboard() {
         <div style={{ height: 24 }} />
 
         <div style={statsGrid}>
-          <StatCard title="Total Sales" value={`₹${stats.revenue}`} icon="💰" />
+          <StatCard
+            title="Total Sales"
+            value={`₹${stats.revenue}`}
+            icon="💰"
+          />
           <StatCard title="Total Orders" value={stats.orders} icon="🧾" />
           <StatCard title="Total Products" value={stats.products} icon="📦" />
           <StatCard title="Total Users" value={stats.users} icon="👥" />
@@ -180,32 +216,35 @@ function AdminDashboard() {
           <div style={card}>
             <div style={cardHeader}>
               <h3>Sales Report</h3>
-              <select value={salesView} onChange={(e) => setSalesView(e.target.value)} style={select}>
+              <select
+                value={salesView}
+                onChange={(e) => setSalesView(e.target.value)}
+                style={select}
+              >
                 <option value="weekly">Weekly</option>
                 <option value="monthly">Monthly</option>
                 <option value="yearly">Yearly</option>
               </select>
             </div>
 
-           <div style={{ width: "100%", minWidth: 0 }}>
-  {salesChartData.length > 0 && (
-    <ResponsiveContainer width="100%" aspect={3}>
-      <AreaChart data={salesChartData}>
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
-        <Area
-          type="monotone"
-          dataKey="sales"
-          stroke="#6366f1"
-          fill="#c7d2fe"
-          strokeWidth={3}
-        />
-      </AreaChart>
-    </ResponsiveContainer>
-  )}
-</div>
-
+            <div style={{ width: "100%", minWidth: 0 }}>
+              {salesChartData.length > 0 && (
+                <ResponsiveContainer width="100%" aspect={3}>
+                  <AreaChart data={salesChartData}>
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Area
+                      type="monotone"
+                      dataKey="sales"
+                      stroke="#6366f1"
+                      fill="#c7d2fe"
+                      strokeWidth={3}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              )}
+            </div>
           </div>
 
           {/* SHIPMENT */}
@@ -220,8 +259,12 @@ function AdminDashboard() {
                     conic-gradient(
                       #facc15 0% ${pPlaced}%,
                       #3b82f6 ${pPlaced}% ${pPlaced + pShipped}%,
-                      #22c55e ${pPlaced + pShipped}% ${pPlaced + pShipped + pDelivered}%,
-                      #ef4444 ${pPlaced + pShipped + pDelivered}% 100%
+                      #22c55e ${pPlaced + pShipped}% ${
+                    pPlaced + pShipped + pDelivered
+                  }%,
+                      #ef4444 ${
+                        pPlaced + pShipped + pDelivered
+                      }% 100%
                     )
                   `,
                 }}
@@ -256,7 +299,7 @@ function AdminDashboard() {
           </div>
         </div>
 
-        {/* RECENT ORDERS — STYLED ONLY */}
+        {/* RECENT ORDERS */}
         <div style={{ ...card, marginTop: 32 }}>
           <h3 style={{ marginBottom: 12 }}>Recent Orders</h3>
 
@@ -275,8 +318,12 @@ function AdminDashboard() {
                 <tr
                   key={o.id}
                   style={tr}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = "#f9fafb")}
-                  onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background = "#f9fafb")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background = "transparent")
+                  }
                 >
                   <td style={td}>#{o.id}</td>
                   <td style={td}>{o.customerName}</td>
@@ -346,7 +393,6 @@ const card = {
   overflow: "hidden",
 };
 
-
 const cardHeader = {
   display: "flex",
   justifyContent: "space-between",
@@ -383,7 +429,7 @@ const legend = {
 const recentTable = {
   width: "100%",
   borderCollapse: "collapse",
-  tableLayout:"fixed"
+  tableLayout: "fixed",
 };
 
 const th = {

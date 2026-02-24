@@ -11,21 +11,21 @@ function ManageOrders() {
   }, []);
 
   const fetchAllOrders = async () => {
-    const usersRes = await axios.get("http://localhost:5000/users");
-    let allOrders = [];
+    // ✅ Fetch users + orders from json-server
+    const [usersRes, ordersRes] = await Promise.all([
+      axios.get("http://localhost:5000/users"),
+      axios.get("http://localhost:5000/orders"),
+    ]);
 
-    usersRes.data.forEach((user) => {
-      const userOrders =
-        JSON.parse(localStorage.getItem(`orders_${user.id}`)) || [];
-
-      userOrders.forEach((order) => {
-        allOrders.push({
-          ...order,
-          userId: user.id,
-          customer: user.username,
-          email: user.email,
-        });
-      });
+    const users = usersRes.data;
+    const allOrders = ordersRes.data.map((order) => {
+      const user = users.find((u) => u.id === order.userId);
+      return {
+        ...order,
+        userId: order.userId,
+        customer: user ? user.username : "Unknown",
+        email: user ? user.email : "",
+      };
     });
 
     setOrders(allOrders.reverse());
@@ -41,19 +41,14 @@ function ManageOrders() {
   const filteredOrders = orders.filter(
     (o) =>
       o.customer.toLowerCase().includes(search.toLowerCase()) ||
-      o.id.toString().includes(search)
+      String(o.id).includes(search)
   );
 
-  /* UPDATE STATUS */
-  const updateStatus = (order, newStatus) => {
-    const key = `orders_${order.userId}`;
-    const userOrders = JSON.parse(localStorage.getItem(key)) || [];
-
-    const updatedOrders = userOrders.map((o) =>
-      o.id === order.id ? { ...o, status: newStatus } : o
-    );
-
-    localStorage.setItem(key, JSON.stringify(updatedOrders));
+  /* UPDATE STATUS → json-server */
+  const updateStatus = async (order, newStatus) => {
+    await axios.patch(`http://localhost:5000/orders/${order.id}`, {
+      status: newStatus,
+    });
     fetchAllOrders();
   };
 
@@ -66,7 +61,12 @@ function ManageOrders() {
 
         {/* STATS */}
         <div style={statsGrid}>
-          <StatCard label="Total Orders" value={totalOrders} icon="📦" bg="#eef2ff" />
+          <StatCard
+            label="Total Orders"
+            value={totalOrders}
+            icon="📦"
+            bg="#eef2ff"
+          />
           <StatCard label="Pending" value={pending} icon="⏳" bg="#fef3c7" />
           <StatCard label="Shipped" value={shipped} icon="🚚" bg="#dbeafe" />
           <StatCard label="Completed" value={completed} icon="✅" bg="#dcfce7" />
@@ -118,6 +118,8 @@ function ManageOrders() {
                             ? "#dcfce7"
                             : o.status === "Shipped"
                             ? "#dbeafe"
+                            : o.status === "Cancelled"
+                            ? "#fee2e2"
                             : "#fef3c7",
                       }}
                     >
@@ -128,9 +130,7 @@ function ManageOrders() {
                   <td>
                     <select
                       value={o.status}
-                      onChange={(e) =>
-                        updateStatus(o, e.target.value)
-                      }
+                      onChange={(e) => updateStatus(o, e.target.value)}
                       style={select}
                     >
                       <option value="Placed">Pending</option>
@@ -188,7 +188,6 @@ const stat = {
   borderRadius: 18,
   textAlign: "center",
   boxShadow: "0 10px 25px rgba(0,0,0,0.08)",
-  
 };
 
 const iconCircle = {
@@ -206,7 +205,7 @@ const iconCircle = {
 const statLabel = {
   color: "#475569",
   fontSize: 14,
-  height:"23px"
+  height: "23px",
 };
 
 const statValue = {
@@ -232,7 +231,7 @@ const table = {
 
 const thead = {
   background: "#e0e7ff",
-  height:"50px"
+  height: "50px",
 };
 
 const row = {

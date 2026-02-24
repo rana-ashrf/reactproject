@@ -44,8 +44,8 @@ function SaleProductDetails() {
   if (!product) return <p>Loading...</p>;
 
   const isWishlisted = wishlist.some(
-    (item) => item.id === product.id
-  );
+  (item) => item.productId === product.id
+);
 
   const finalPrice = getFinalPrice(
     product.price,
