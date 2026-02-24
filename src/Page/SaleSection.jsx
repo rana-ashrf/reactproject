@@ -7,7 +7,7 @@ function SaleSection() {
   return (
     <section className="sale-section"
       style={{ backgroundImage: `url(${sales})` }} >
-      <div className="sale-overlay">
+      <div className="sale-overlay">  
         <h1>SALE</h1>
         <p>UP TO 50% OFF</p>
         <button
